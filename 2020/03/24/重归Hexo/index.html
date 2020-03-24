@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"crowds21.gitee.io","root":"/crowds/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"crowds21.gitee.io","root":"/crowds/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="重归Hexo自从Manjaro更新后，对Nvidia变得更糟糕了，完全没有办法正常使用，也导致我一直没有去更新和使用博客。 但是自己开始有了用Markdown整理笔记的习惯，觉得不去用博客来收集一下，未免太可惜了。 打算这次将博客部署到Gitee上，方便自己的日常使用。">
@@ -28,9 +28,10 @@
 <meta property="og:description" content="重归Hexo自从Manjaro更新后，对Nvidia变得更糟糕了，完全没有办法正常使用，也导致我一直没有去更新和使用博客。 但是自己开始有了用Markdown整理笔记的习惯，觉得不去用博客来收集一下，未免太可惜了。 打算这次将博客部署到Gitee上，方便自己的日常使用。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-24T12:11:08.000Z">
-<meta property="article:modified_time" content="2020-03-24T14:11:51.263Z">
+<meta property="article:modified_time" content="2020-03-24T14:59:18.478Z">
 <meta property="article:author" content="Crowds">
-<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="NexT">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://crowds21.gitee.io/crowds/2020/03/24/%E9%87%8D%E5%BD%92Hexo/">
@@ -118,6 +119,11 @@
     <a href="/crowds/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
 
   </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/crowds/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/crowds/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
@@ -154,7 +160,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/crowds/uploads/avatar.jpg">
       <meta itemprop="name" content="Crowds">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="Thinking is a good servant,<br/>but a bad master">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -173,7 +179,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-03-24 20:11:08 / Modified: 22:11:51" itemprop="dateCreated datePublished" datetime="2020-03-24T20:11:08+08:00">2020-03-24</time>
+              <time title="Created: 2020-03-24 20:11:08 / Modified: 22:59:18" itemprop="dateCreated datePublished" datetime="2020-03-24T20:11:08+08:00">2020-03-24</time>
             </span>
 
           
@@ -269,7 +275,8 @@
 
 <p>用如下语法引用</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125;</span><br><span class="line">&#123;% asset_img slug [title] %&#125;</span><br><span class="line">&#123;% asset_link slug [title] %&#125;</span><br><span class="line">&#123;% asset_img example.jpg This is an example image %&#125;</span><br></pre></td></tr></table></figure>
-<p><a href="[https://hexo.io/zh-cn/docs/asset-folders#%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E5%BC%95%E7%94%A8%E7%9A%84%E6%A0%87%E7%AD%BE%E6%8F%92%E4%BB%B6](https://hexo.io/zh-cn/docs/asset-folders#相对路径引用的标签插件)">参考：资源文件夹</a></p>
+<p>​    <a href="[https://hexo.io/zh-cn/docs/asset-folders#%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E5%BC%95%E7%94%A8%E7%9A%84%E6%A0%87%E7%AD%BE%E6%8F%92%E4%BB%B6](https://hexo.io/zh-cn/docs/asset-folders#相对路径引用的标签插件)">参考：资源文件夹</a></p>
+<p>​    但是在图片大小设置上，依然存在一些问题，有待解决</p>
 
     </div>
 
@@ -279,7 +286,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/crowds/tags/hexo/" rel="tag"># hexo</a>
+              <a href="/crowds/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/crowds/tags/NexT/" rel="tag"># NexT</a>
           </div>
 
         
@@ -360,7 +368,7 @@
     <img class="site-author-image" itemprop="image" alt="Crowds"
       src="/crowds/uploads/avatar.jpg">
   <p class="site-author-name" itemprop="name">Crowds</p>
-  <div class="site-description" itemprop="description"></div>
+  <div class="site-description" itemprop="description">Thinking is a good servant,<br/>but a bad master</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -372,8 +380,10 @@
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">3</span>
-        <span class="site-state-item-name">tags</span>
+            <a href="/crowds/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -401,7 +411,7 @@
 
 <div class="copyright">
   
-  &copy; 
+  &copy; 2019 – 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
@@ -411,7 +421,7 @@
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.2
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
   </div>
 
         
@@ -428,6 +438,8 @@
   </div>
 
   
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/crowds/lib/canvas-nest/canvas-nest.min.js"></script>
   <script src="/crowds/lib/anime.min.js"></script>
   <script src="/crowds/lib/velocity/velocity.min.js"></script>
   <script src="/crowds/lib/velocity/velocity.ui.min.js"></script>
