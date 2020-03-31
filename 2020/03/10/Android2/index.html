@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"crowds21.top","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Android-2Android 作业2 [TOC]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android-ListView">
+<meta property="og:url" content="crowds21.top/2020/03/10/Android2/index.html">
+<meta property="og:site_name" content="Crowds21">
+<meta property="og:description" content="Android-2Android 作业2 [TOC]">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="crowds21.top/2020/03/10/Android2/ex2_result0.jpg">
+<meta property="og:image" content="crowds21.top/2020/03/10/Android2/ex2_result1.jpg">
+<meta property="og:image" content="crowds21.top/2020/03/10/Android2/ex2_result2.jpg">
+<meta property="og:image" content="crowds21.top/2020/03/10/Android2/image-20200312164731101.png">
+<meta property="article:published_time" content="2020-03-10T11:35:00.000Z">
+<meta property="article:modified_time" content="2020-03-31T11:57:39.640Z">
+<meta property="article:author" content="Crowds">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="crowds21.top/2020/03/10/Android2/ex2_result0.jpg">
+
+<link rel="canonical" href="crowds21.top/2020/03/10/Android2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>Android-ListView | Crowds21</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a7c71f33be5113656f9ec7859c6a3724";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Crowds21</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>Schedule</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="crowds21.top/2020/03/10/Android2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="Crowds">
+      <meta itemprop="description" content="Thinking is a good servant,<br/>but a bad master">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Crowds21">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android-ListView
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-03-10 19:35:00" itemprop="dateCreated datePublished" datetime="2020-03-10T19:35:00+08:00">2020-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-31 19:57:39" itemprop="dateModified" datetime="2020-03-31T19:57:39+08:00">2020-03-31</time>
+              </span>
+
+          
+            <span id="/2020/03/10/Android2/" class="post-meta-item leancloud_visitors" data-flag-title="Android-ListView" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Android-2"><a href="#Android-2" class="headerlink" title="Android-2"></a>Android-2</h1><p>Android 作业2</p>
+<p>[TOC]</p>
+<a id="more"></a>
+
+<h2 id="成果图"><a href="#成果图" class="headerlink" title="成果图"></a>成果图</h2><h3 id="图一"><a href="#图一" class="headerlink" title="图一"></a>图一</h3><img src="ex2_result0.jpg" alt="ex2_result0" style="zoom:33%;" />
+
+
+
+<h3 id="图二"><a href="#图二" class="headerlink" title="图二"></a>图二</h3><img src="ex2_result1.jpg" alt="ex2_result1" style="zoom: 33%;" />
+
+
+
+<h3 id="图三"><a href="#图三" class="headerlink" title="图三"></a>图三</h3><img src="ex2_result2.jpg" alt="ex2_result2" style="zoom: 33%;" />
+
+<h2 id="未解决问题"><a href="#未解决问题" class="headerlink" title="未解决问题"></a>未解决问题</h2><p>ListView 中的Item按钮事件触发，并不能按照预期进行。三个Item中第二个Item中的ImageButton单击事件会随机触发第一个Item或第二个Item</p>
+<h2 id="已解决问题"><a href="#已解决问题" class="headerlink" title="已解决问题"></a>已解决问题</h2><h3 id="OnClick"><a href="#OnClick" class="headerlink" title="OnClick"></a>OnClick</h3><ul>
+<li>匿名内部类</li>
+<li>OnClickLinster 接口</li>
+</ul>
+<h3 id="页面转跳"><a href="#页面转跳" class="headerlink" title="页面转跳"></a>页面转跳</h3><p><strong>参考：</strong><a href="https://www.jianshu.com/p/c9422dfd4531" target="_blank" rel="noopener">android笔记-页面转跳</a></p>
+<ul>
+<li><p>需要在清单文件中为其配置一个activity标签,下图为当时的项目文件，ButtonDisplay为第二个活动</p>
+</li>
+<li><p>需要写 <intent-filter> 的是主活动</p>
+</li>
+</ul>
+<p>​    </p>
+<pre><code><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">	<span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">	        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line">	        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">	    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">​	</span><br><span class="line">	<span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">"com.example.exercise2.ButtonDisplay"</span>/&gt;</span></span><br></pre></td></tr></table></figure></code></pre><ul>
+<li><p>一个应用程序可以在桌面创建多个快捷图标。</p>
+</li>
+<li><p>activity的名称、图标可以和应用程序的名称、图标不相同</p>
+</li>
+</ul>
+<p>​    </p>
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">android:icon=<span class="string">"@drawable/ic_launcher"</span></span><br><span class="line">android:label=<span class="string">"@string/app_name"</span></span><br></pre></td></tr></table></figure></code></pre><hr>
+<blockquote>
+<p>Activity的跳转需要创建Intent对象，通过设置intent对象的参数指定要跳转Activity</p>
+<p>通过设置Activity的包名和类名实现跳转，称为显式意图</p>
+<p>通过指定动作实现跳转，称为隐式意图</p>
+</blockquote>
+<h4 id="显式意图"><a href="#显式意图" class="headerlink" title="显式意图"></a>显式意图</h4><ul>
+<li>跳转至同一项目下的另一个Activity，直接指定该Activity的字节码即可</li>
+</ul>
+<p>​    </p>
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line">  intent.setClass(<span class="keyword">this</span>, SecondActivity<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"><span class="comment">// Intent intent = new Intent(this, ButtonDisplay.class); 也可</span></span><br><span class="line">  startActivity(intent);</span><br></pre></td></tr></table></figure></code></pre><ul>
+<li><p>跳转至其他应用中的Activity，需要指定该应用的包名和该Activity的类名</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line"><span class="comment">//启动系统自带的拨号器应用</span></span><br><span class="line">intent.setClassName(<span class="string">"com.android.dialer"</span>, <span class="string">"com.android.dialer.DialtactsActivity"</span>);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h3 id="ListView"><a href="#ListView" class="headerlink" title="ListView"></a>ListView</h3><ul>
+<li>List</li>
+<li>Adapter<ul>
+<li>inflater函数</li>
+</ul>
+</li>
+<li>setAdapter</li>
+</ul>
+<h4 id="提升listView运行效率"><a href="#提升listView运行效率" class="headerlink" title="提升listView运行效率"></a>提升listView运行效率</h4><ul>
+<li>convertView</li>
+</ul>
+<ul>
+<li>避免ListView滚动时,getView多次重复加载</li>
+<li>避免findViewById()多次获取控件实例</li>
+</ul>
+<p>运行结果发现ListView中的按钮点击无效。</p>
+<p><a href="https://www.cnblogs.com/yangqiangyu/p/5112941.html" target="_blank" rel="noopener">参考：ListView setOnItemClickListener无效原因分析</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">android:focusable=”false” </span><br><span class="line">android:clickable=”false” </span><br><span class="line">android:focusableInTouchMode=”false”</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">或在 item的最外层写</span><br><span class="line">android:descendantFocusability="blocksDescendants"</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="ConstraintLayout"><a href="#ConstraintLayout" class="headerlink" title="ConstraintLayout"></a>ConstraintLayout</h3><p><a href="https://developer.android.google.cn/reference/android/support/constraint/ConstraintLayout" target="_blank" rel="noopener">参考：ConstraintLayout 官方文档</a></p>
+<p>每个部件在 <code>上 下 左 右</code>四个方向上，至少要设置好两个方向上的相对位置。</p>
+<img src="image-20200312164731101.png" alt="image-20200312164731101" style="zoom: 67%;" />
+
+<p>上图设置了 </p>
+<ul>
+<li>头像紧贴父布局的左侧和上侧</li>
+<li>日期紧贴父布局上侧，头像左侧</li>
+<li>标题紧贴父布局左侧，头像下侧</li>
+</ul>
+<h4 id="ImageView"><a href="#ImageView" class="headerlink" title="ImageView"></a>ImageView</h4><p><a href="https://developer.android.google.cn/reference/kotlin/android/widget/ImageView?hl=en" target="_blank" rel="noopener">参考：ImageView官方文档</a></p>
+<h5 id="图片的显示"><a href="#图片的显示" class="headerlink" title="图片的显示"></a>图片的显示</h5><ul>
+<li><p>scaleType</p>
+<p>  <strong>CENTER /center</strong> 按图片的原来size居中显示，当图片长/宽超过View的长/宽，则截取图片的居中部分显示</p>
+<p>  <strong>CENTER_CROP / centerCrop</strong> 按比例扩大图片的size居中显示，使得图片长(宽)等于或大于View的长(宽)</p>
+<p>  <strong>CENTER_INSIDE / centerInside</strong> 将图片的内容完整居中显示，通过按比例缩小或原来的size使得图片长/宽等于或小于View的长/宽</p>
+<p>  <strong>FIT_CENTER / fitCenter</strong> 把图片按比例扩大/缩小到View的宽度，居中显示</p>
+<p>  <strong>FIT_END / fitEnd</strong>  把图片按比例扩大/缩小到View的宽度，显示在View的下部分位置</p>
+<p>  <strong>FIT_START / fitStart</strong> 把图片按比例扩大/缩小到View的宽度，显示在View的上部分位置</p>
+<p>  <strong>FIT_XY / fitXY</strong> 把图片不按比例扩大/缩小到View的大小显示</p>
+<p>  <strong>MATRIX / matrix</strong> 用矩阵来绘制，动态缩小放大图片来显示。</p>
+<p>  <strong>注意一点，Drawable文件夹里面的图片命名是不能大写的</strong></p>
+</li>
+</ul>
+<h4 id="ImageView-1"><a href="#ImageView-1" class="headerlink" title="ImageView"></a>ImageView</h4><ul>
+<li>使用wrap_content会导致程序闪退，原因未知</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ImageButton</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:id</span>=<span class="string">"@+id/image_btn_seeing"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:layout_width</span>=<span class="string">"20dp"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:layout_height</span>=<span class="string">"20dp"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:scaleType</span>=<span class="string">"fitCenter"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:background</span>=<span class="string">"@color/colorWhite"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:layout_marginRight</span>=<span class="string">"20dp"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">app:layout_constraintLeft_toRightOf</span>=<span class="string">"@+id/text_star_num"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">app:layout_constraintTop_toBottomOf</span>=<span class="string">"@+id/text_profile"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">app:layout_constraintBottom_toBottomOf</span>=<span class="string">"@id/image_btn_star"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">app:layout_constraintTop_toTopOf</span>=<span class="string">"@+id/image_btn_star"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="给TextView赋值整型变量"><a href="#给TextView赋值整型变量" class="headerlink" title="给TextView赋值整型变量"></a>给TextView赋值整型变量</h3><p>TextView 不能直接接收整型数据，需要利用setText()函数转换为字符串 a.setText(String.valueOf(i));</p>
+<h3 id="ListView中item的距离"><a href="#ListView中item的距离" class="headerlink" title="ListView中item的距离"></a>ListView中item的距离</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">android:divider&#x3D;&quot;#00000000&quot;</span><br><span class="line">android:dividerHeight&#x3D;&quot;18dp&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="二"><a href="#二" class="headerlink" title="二"></a>二</h3><h4 id="acitivy-main"><a href="#acitivy-main" class="headerlink" title="acitivy_main"></a>acitivy_main</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">androidx.constraintlayout.widget.ConstraintLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">ListView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/list_view"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:dividerHeight</span>=<span class="string">"18dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginBottom</span>=<span class="string">"20dp"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ListView</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">androidx.constraintlayout.widget.ConstraintLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="component-list-page"><a href="#component-list-page" class="headerlink" title="component_list_page"></a>component_list_page</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">androidx.constraintlayout.widget.ConstraintLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:descendantFocusability</span>=<span class="string">"blocksDescendants"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/image_head"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintLeft_toLeftOf</span>=<span class="string">"parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintTop_toTopOf</span>=<span class="string">"parent"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/text_date"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintLeft_toRightOf</span>=<span class="string">"@id/image_head"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintBottom_toBottomOf</span>=<span class="string">"@id/image_head"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintTop_toTopOf</span>=<span class="string">"@+id/image_head"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/text_title"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">style</span>=<span class="string">"@style/TitleText"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintLeft_toLeftOf</span>=<span class="string">"parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintTop_toBottomOf</span>=<span class="string">"@+id/image_head"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginTop</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginLeft</span>=<span class="string">"5dp"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/image_body"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"600px"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:scaleType</span>=<span class="string">"centerCrop"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintLeft_toLeftOf</span>=<span class="string">"parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintTop_toBottomOf</span>=<span class="string">"@id/text_title"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/text_profile"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginTop</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintLeft_toLeftOf</span>=<span class="string">"parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintTop_toBottomOf</span>=<span class="string">"@+id/image_body"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageButton</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/image_btn_star"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"20dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"20dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:scaleType</span>=<span class="string">"fitCenter"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:background</span>=<span class="string">"@color/colorWhite"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_margin</span>=<span class="string">"15dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginBottom</span>=<span class="string">"20dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintLeft_toLeftOf</span>=<span class="string">"parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintTop_toBottomOf</span>=<span class="string">"@+id/text_profile"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/text_star_num"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"25dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:gravity</span>=<span class="string">"center"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintLeft_toRightOf</span>=<span class="string">"@+id/image_btn_star"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintTop_toBottomOf</span>=<span class="string">"@+id/text_profile"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintBottom_toBottomOf</span>=<span class="string">"@id/image_btn_star"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintTop_toTopOf</span>=<span class="string">"@+id/image_btn_star"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageButton</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/image_btn_seeing"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"20dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"20dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:scaleType</span>=<span class="string">"fitCenter"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:background</span>=<span class="string">"@color/colorWhite"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginRight</span>=<span class="string">"20dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintLeft_toRightOf</span>=<span class="string">"@+id/text_star_num"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintTop_toBottomOf</span>=<span class="string">"@+id/text_profile"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintBottom_toBottomOf</span>=<span class="string">"@id/image_btn_star"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintTop_toTopOf</span>=<span class="string">"@+id/image_btn_star"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/text_seeing_num"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"25dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:gravity</span>=<span class="string">"center"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintLeft_toRightOf</span>=<span class="string">"@+id/image_btn_seeing"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintTop_toBottomOf</span>=<span class="string">"@+id/text_profile"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintBottom_toBottomOf</span>=<span class="string">"@id/image_btn_star"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintTop_toTopOf</span>=<span class="string">"@+id/image_btn_star"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">androidx.constraintlayout.widget.ConstraintLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="MainAcitivy"><a href="#MainAcitivy" class="headerlink" title="MainAcitivy"></a>MainAcitivy</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.myapplication;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.widget.AdapterView;</span><br><span class="line"><span class="keyword">import</span> android.widget.ListView;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;ComponentDisplayCard&gt; displayCards  = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    ComponentDisplayCard componentDisplayCard1 ;</span><br><span class="line">    ComponentDisplayCard componentDisplayCard2 ;</span><br><span class="line">    ComponentDisplayCard componentDisplayCard3 ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        initListPage();</span><br><span class="line">        DisplayCardAdapter adapter = <span class="keyword">new</span> DisplayCardAdapter(MainActivity.<span class="keyword">this</span>,</span><br><span class="line">                R.layout.component_list_page,displayCards);</span><br><span class="line">        ListView listview = (ListView) findViewById(R.id.list_view);</span><br><span class="line">        listview.setAdapter(adapter);</span><br><span class="line"></span><br><span class="line"><span class="comment">//        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() &#123;</span></span><br><span class="line"><span class="comment">//            @Override</span></span><br><span class="line"><span class="comment">//            public void onItemClick(AdapterView&lt;?&gt; parent, View view, int position, long id) &#123;</span></span><br><span class="line"><span class="comment">//                Log.d("click","start");</span></span><br><span class="line"><span class="comment">//                ComponentDisplayCard displayCard = displayCards.get(position);</span></span><br><span class="line"><span class="comment">//                Toast.makeText(MainActivity.this,displayCard.getProfile(),</span></span><br><span class="line"><span class="comment">//                        Toast.LENGTH_SHORT).show();</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initListPage</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String strDateFormat = <span class="string">"dd-MM-yy"</span>;</span><br><span class="line">        SimpleDateFormat format = <span class="keyword">new</span> SimpleDateFormat(strDateFormat);</span><br><span class="line"></span><br><span class="line">        componentDisplayCard1 = <span class="keyword">new</span> ComponentDisplayCard(</span><br><span class="line">                R.drawable.day_and_night,</span><br><span class="line">                format.format(<span class="keyword">new</span> Date()),</span><br><span class="line">                <span class="string">"为什么我们喜欢玩黑暗之魂？"</span>,</span><br><span class="line">                R.drawable.darksoul,</span><br><span class="line">                <span class="string">"伪善骑士的背叛，凄苦孤女的沉沦，正义勇者的迷失，\n还有那如无尽深渊一般的结局。"</span>,</span><br><span class="line">                R.mipmap.collect,<span class="number">0</span>,</span><br><span class="line">                R.mipmap.mine, <span class="number">0</span>);</span><br><span class="line">        displayCards.add(componentDisplayCard1);</span><br><span class="line"></span><br><span class="line">        componentDisplayCard2 = <span class="keyword">new</span> ComponentDisplayCard(</span><br><span class="line">                R.drawable.spoon,</span><br><span class="line">                format.format(<span class="keyword">new</span> Date()),</span><br><span class="line">                <span class="string">"这就是克苏鲁！"</span>,</span><br><span class="line">                R.drawable.cthulhu,</span><br><span class="line">                <span class="string">"人类最古老而又最强烈的情感是恐惧，\n而最古老又最强烈的恐惧是未知。"</span>,</span><br><span class="line">                R.mipmap.collect, <span class="number">0</span>,</span><br><span class="line">                R.mipmap.mine, <span class="number">0</span>);</span><br><span class="line">        displayCards.add(componentDisplayCard2);</span><br><span class="line"></span><br><span class="line">         componentDisplayCard3 = <span class="keyword">new</span> ComponentDisplayCard(</span><br><span class="line">                R.drawable.ballon,</span><br><span class="line">                format.format(<span class="keyword">new</span> Date()),</span><br><span class="line">                <span class="string">"细胞分裂的十年"</span>,</span><br><span class="line">                R.drawable.splinter_cell,</span><br><span class="line">                <span class="string">"Then it's only me...."</span>,</span><br><span class="line">                R.mipmap.collect, <span class="number">0</span>,</span><br><span class="line">                 R.mipmap.mine, <span class="number">0</span>);</span><br><span class="line">        displayCards.add(componentDisplayCard3);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="DisplayCardAdapter"><a href="#DisplayCardAdapter" class="headerlink" title="DisplayCardAdapter"></a>DisplayCardAdapter</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.myapplication;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.os.Handler;</span><br><span class="line"><span class="keyword">import</span> android.os.Message;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"><span class="keyword">import</span> android.view.LayoutInflater;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.ViewGroup;</span><br><span class="line"><span class="keyword">import</span> android.widget.ArrayAdapter;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageButton;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.annotation.NonNull;</span><br><span class="line"><span class="keyword">import</span> androidx.annotation.Nullable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DisplayCardAdapter</span> <span class="keyword">extends</span> <span class="title">ArrayAdapter</span>&lt;<span class="title">ComponentDisplayCard</span>&gt;  </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> resourceId;</span><br><span class="line">    ComponentDisplayCard displayCard;</span><br><span class="line">    ViewHolder viewHolder ;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span>  <span class="keyword">int</span> IMAGE_BTN_STAR_CHANGE = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span>  <span class="keyword">int</span> IMAGE_BTN_SEE_CHANGE = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Handler handler = <span class="keyword">new</span> Handler()&#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(@NonNull Message msg)</span> </span>&#123;</span><br><span class="line">            Log.d(<span class="string">"Handler"</span>,<span class="string">"getmessage"</span>);</span><br><span class="line">            <span class="keyword">switch</span>(msg.what)&#123;</span><br><span class="line">                <span class="keyword">case</span> IMAGE_BTN_STAR_CHANGE :</span><br><span class="line">                    <span class="keyword">if</span> (displayCard.getImageBtnStarId() == R.mipmap.collect)&#123;</span><br><span class="line">                        displayCard.setImageBtnStarId(R.mipmap.collect_red);</span><br><span class="line">                        viewHolder.imageBtnStar.setImageResource(displayCard.getImageBtnStarId());</span><br><span class="line">                        String i = displayCard.getStarNum();</span><br><span class="line">                        displayCard.setStarNum(Integer.parseInt(i) + <span class="number">1</span>);</span><br><span class="line">                        viewHolder.textStarNum.setText(displayCard.getStarNum());</span><br><span class="line"></span><br><span class="line">                        Toast.makeText(getContext(),<span class="string">"收藏好了哦^.^"</span>,</span><br><span class="line">                                Toast.LENGTH_SHORT).show();</span><br><span class="line">                    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                        displayCard.setImageBtnStarId(R.mipmap.collect);</span><br><span class="line">                        viewHolder.imageBtnStar.setImageResource(displayCard.getImageBtnStarId());</span><br><span class="line">                        String i = displayCard.getStarNum();</span><br><span class="line">                        displayCard.setStarNum(Integer.parseInt(i) - <span class="number">1</span>);</span><br><span class="line">                        viewHolder.textStarNum.setText(displayCard.getStarNum());</span><br><span class="line"></span><br><span class="line">                        Toast.makeText(getContext(),<span class="string">"取消啦QAQ"</span>,</span><br><span class="line">                                Toast.LENGTH_SHORT).show();</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> IMAGE_BTN_SEE_CHANGE:</span><br><span class="line">                    <span class="keyword">if</span> (displayCard.getImageBtnSeeingId() == R.mipmap.mine)&#123;</span><br><span class="line">                        displayCard.setImageBtnSeeingId(R.mipmap.mine_red);</span><br><span class="line">                        viewHolder.imageBtnSeeing.setImageResource(displayCard.getImageBtnSeeingId());</span><br><span class="line"></span><br><span class="line">                        String i = displayCard.getSeeingNum();</span><br><span class="line">                        displayCard.setSeeingNum(Integer.parseInt(i) + <span class="number">1</span>);</span><br><span class="line">                        viewHolder.textSeeingNum.setText(displayCard.getSeeingNum());</span><br><span class="line">                        Toast.makeText(getContext(),<span class="string">"我正在看^.^"</span>,</span><br><span class="line">                                Toast.LENGTH_SHORT).show();</span><br><span class="line">                    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                        displayCard.setImageBtnSeeingId(R.mipmap.mine);</span><br><span class="line">                        viewHolder.imageBtnSeeing.setImageResource(displayCard.getImageBtnSeeingId());</span><br><span class="line"></span><br><span class="line">                        String i = displayCard.getSeeingNum();</span><br><span class="line">                        displayCard.setSeeingNum(Integer.parseInt(i) - <span class="number">1</span>);</span><br><span class="line">                        viewHolder.textSeeingNum.setText(displayCard.getSeeingNum());</span><br><span class="line">                        Toast.makeText(getContext(),<span class="string">"还是算了QAQ"</span>,</span><br><span class="line">                                Toast.LENGTH_SHORT).show();</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DisplayCardAdapter</span><span class="params">(@NonNull Context context, <span class="keyword">int</span> resource,</span></span></span><br><span class="line"><span class="function"><span class="params">                              @NonNull List&lt;ComponentDisplayCard&gt; objects)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, resource, objects);</span><br><span class="line">        resourceId = resource;      <span class="comment">//listview 布局ID</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, @Nullable View convertView, @NonNull ViewGroup parent)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取当前组成ListView的实例</span></span><br><span class="line">        displayCard = getItem(position);</span><br><span class="line"></span><br><span class="line">        View view = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (convertView == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="comment">//首次加载，用viewHolder获取实例</span></span><br><span class="line">            view = LayoutInflater.from(getContext()).inflate(resourceId,parent,<span class="keyword">false</span>);</span><br><span class="line">            viewHolder = <span class="keyword">new</span> ViewHolder();</span><br><span class="line"></span><br><span class="line">            <span class="comment">//绑定组件</span></span><br><span class="line">            viewHolder.imageHead= (ImageView) view.findViewById(R.id.image_head);</span><br><span class="line">            viewHolder.textDate = (TextView)view.findViewById(R.id.text_date);</span><br><span class="line">            viewHolder.textTitle = (TextView)view.findViewById(R.id.text_title);</span><br><span class="line">            viewHolder.imageBody = (ImageView)view.findViewById(R.id.image_body);</span><br><span class="line">            viewHolder.textProfile = (TextView)view.findViewById(R.id.text_profile);</span><br><span class="line">            viewHolder.imageBtnStar= (ImageButton)view.findViewById(R.id.image_btn_star);</span><br><span class="line">            viewHolder.textStarNum = (TextView)view.findViewById(R.id.text_star_num);</span><br><span class="line">            viewHolder.imageBtnSeeing= (ImageButton)view.findViewById(R.id.image_btn_seeing);</span><br><span class="line">            viewHolder.textSeeingNum = (TextView)view.findViewById(R.id.text_seeing_num);</span><br><span class="line">            view.setTag(viewHolder);<span class="comment">//将ViewHolder 存储在View中</span></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            view = convertView;</span><br><span class="line">            viewHolder = (ViewHolder)view.getTag(); <span class="comment">//重新获取ViewHolder</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//设定组件内容</span></span><br><span class="line">        viewHolder.imageHead.setImageResource(displayCard.getImageHeadId());</span><br><span class="line">        viewHolder.textDate.setText(displayCard.getDate());</span><br><span class="line">        viewHolder.textTitle.setText(displayCard.getTitle());</span><br><span class="line">        viewHolder.imageBody.setImageResource(displayCard.getImageBodyId());</span><br><span class="line">        viewHolder.textProfile.setText(displayCard.getProfile());</span><br><span class="line">        viewHolder.imageBtnStar.setImageResource(displayCard.getImageBtnStarId());</span><br><span class="line">        viewHolder.textStarNum.setText(displayCard.getStarNum());</span><br><span class="line">        viewHolder.imageBtnSeeing.setImageResource(displayCard.getImageBtnSeeingId());</span><br><span class="line">        viewHolder.textSeeingNum.setText(displayCard.getSeeingNum());</span><br><span class="line"></span><br><span class="line">        viewHolder.imageBtnStar.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                        <span class="meta">@Override</span></span><br><span class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                            Log.d(<span class="string">"Handler"</span>,<span class="string">"Thread"</span>);</span><br><span class="line">                            Message message = <span class="keyword">new</span> Message();</span><br><span class="line">                            message.what = IMAGE_BTN_STAR_CHANGE ;</span><br><span class="line">                            handler.sendMessage(message);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;).start();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        viewHolder.imageBtnSeeing.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        Log.d(<span class="string">"Handler"</span>,<span class="string">"Thread"</span>);</span><br><span class="line">                        Message message = <span class="keyword">new</span> Message();</span><br><span class="line">                        message.what = IMAGE_BTN_SEE_CHANGE ;</span><br><span class="line">                        handler.sendMessage(message);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;).start();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> view;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span></span>&#123;</span><br><span class="line">        <span class="comment">//头像</span></span><br><span class="line">        ImageView imageHead;</span><br><span class="line">        <span class="comment">//日期</span></span><br><span class="line">        TextView textDate;</span><br><span class="line">        <span class="comment">//标题</span></span><br><span class="line">        TextView textTitle;</span><br><span class="line">        <span class="comment">//展示图片</span></span><br><span class="line">        ImageView imageBody;</span><br><span class="line">        <span class="comment">//简介</span></span><br><span class="line">        TextView textProfile;</span><br><span class="line">        <span class="comment">//收藏</span></span><br><span class="line">        ImageButton imageBtnStar;</span><br><span class="line">        <span class="comment">//收藏数</span></span><br><span class="line">        TextView textStarNum;</span><br><span class="line"><span class="comment">//        //在看</span></span><br><span class="line">        ImageButton imageBtnSeeing;</span><br><span class="line"><span class="comment">//        //在看数</span></span><br><span class="line">        TextView textSeeingNum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="ComponentDisplayCard"><a href="#ComponentDisplayCard" class="headerlink" title="ComponentDisplayCard"></a>ComponentDisplayCard</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.myapplication;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ComponentDisplayCard</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> imageHeadId ;</span><br><span class="line">    <span class="keyword">private</span> String date;</span><br><span class="line">    <span class="keyword">private</span> String title;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> imageBodyId;</span><br><span class="line">    <span class="keyword">private</span> String profile;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> imageBtnStarId;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> starNum;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> imageBtnSeeingId;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> seeingNum;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setImageHeadId</span><span class="params">(<span class="keyword">int</span> imageHeadId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.imageHeadId = imageHeadId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDate</span><span class="params">(String date)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.date = date;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTitle</span><span class="params">(String title)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.title = title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setImageBodyId</span><span class="params">(<span class="keyword">int</span> imageBodyId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.imageBodyId = imageBodyId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setProfile</span><span class="params">(String profile)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.profile = profile;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setImageBtnStarId</span><span class="params">(<span class="keyword">int</span> imageBtnStarId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.imageBtnStarId = imageBtnStarId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStarNum</span><span class="params">(<span class="keyword">int</span> starNum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.starNum = starNum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setImageBtnSeeingId</span><span class="params">(<span class="keyword">int</span> imageBtnSeeingId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.imageBtnSeeingId = imageBtnSeeingId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSeeingNum</span><span class="params">(<span class="keyword">int</span> seeingNum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.seeingNum = seeingNum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ComponentDisplayCard</span><span class="params">(<span class="keyword">int</span> imageHeadId, String date, String title,</span></span></span><br><span class="line"><span class="function"><span class="params">                                <span class="keyword">int</span> imageBodyId, String profile,</span></span></span><br><span class="line"><span class="function"><span class="params">                                <span class="keyword">int</span> imageBtnStarId, <span class="keyword">int</span> starNum,</span></span></span><br><span class="line"><span class="function"><span class="params">                                <span class="keyword">int</span> imageBtnSeeingId, <span class="keyword">int</span> seeingNum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.imageHeadId = imageHeadId;</span><br><span class="line">        <span class="keyword">this</span>.date = date;</span><br><span class="line">        <span class="keyword">this</span>.title = title;</span><br><span class="line">        <span class="keyword">this</span>.imageBodyId = imageBodyId;</span><br><span class="line">        <span class="keyword">this</span>.profile = profile;</span><br><span class="line">        <span class="keyword">this</span>.imageBtnStarId = imageBtnStarId;</span><br><span class="line">        <span class="keyword">this</span>.starNum = starNum;</span><br><span class="line">        <span class="keyword">this</span>.imageBtnSeeingId = imageBtnSeeingId;</span><br><span class="line">        <span class="keyword">this</span>.seeingNum = seeingNum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getImageHeadId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> imageHeadId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getDate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> date;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getTitle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getImageBodyId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> imageBodyId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getProfile</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> profile;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getImageBtnStarId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> imageBtnStarId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getStarNum</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> String.valueOf(starNum);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getImageBtnSeeingId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> imageBtnSeeingId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getSeeingNum</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span>  String.valueOf(seeingNum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/03/Typora/" rel="prev" title="Typora入教程">
+      <i class="fa fa-chevron-left"></i> Typora入教程
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/23/Typora-Theme/" rel="next" title="Typora Theme">
+      Typora Theme <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-2"><span class="nav-number">1.</span> <span class="nav-text">Android-2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#成果图"><span class="nav-number">1.1.</span> <span class="nav-text">成果图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图一"><span class="nav-number">1.1.1.</span> <span class="nav-text">图一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图二"><span class="nav-number">1.1.2.</span> <span class="nav-text">图二</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图三"><span class="nav-number">1.1.3.</span> <span class="nav-text">图三</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未解决问题"><span class="nav-number">1.2.</span> <span class="nav-text">未解决问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#已解决问题"><span class="nav-number">1.3.</span> <span class="nav-text">已解决问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OnClick"><span class="nav-number">1.3.1.</span> <span class="nav-text">OnClick</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#页面转跳"><span class="nav-number">1.3.2.</span> <span class="nav-text">页面转跳</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#显式意图"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">显式意图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ListView"><span class="nav-number">1.3.3.</span> <span class="nav-text">ListView</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#提升listView运行效率"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">提升listView运行效率</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConstraintLayout"><span class="nav-number">1.3.4.</span> <span class="nav-text">ConstraintLayout</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ImageView"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">ImageView</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#图片的显示"><span class="nav-number">1.3.4.1.1.</span> <span class="nav-text">图片的显示</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ImageView-1"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">ImageView</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给TextView赋值整型变量"><span class="nav-number">1.3.5.</span> <span class="nav-text">给TextView赋值整型变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ListView中item的距离"><span class="nav-number">1.3.6.</span> <span class="nav-text">ListView中item的距离</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">1.4.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二"><span class="nav-number">1.4.1.</span> <span class="nav-text">二</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#acitivy-main"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">acitivy_main</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#component-list-page"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">component_list_page</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MainAcitivy"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">MainAcitivy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DisplayCardAdapter"><span class="nav-number">1.4.1.4.</span> <span class="nav-text">DisplayCardAdapter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ComponentDisplayCard"><span class="nav-number">1.4.1.5.</span> <span class="nav-text">ComponentDisplayCard</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Crowds"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Crowds</p>
+  <div class="site-description" itemprop="description">Thinking is a good servant,<br/>but a bad master</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/crowds21" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;crowds21" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Crowds</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+  <script>
+  function leancloudSelector(url) {
+    url = encodeURI(url);
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = decodeURI(visitors.getAttribute('id'));
+      var title = visitors.dataset.flagTitle;
+
+      //2020-3-26
+      // Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+      Counter('get', `/classes/Counter?where=${encodeURIComponent(JSON.stringify({ url }))}&limit=1`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+              leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title, url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.error('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return decodeURI(element.getAttribute('id'));
+      });
+
+      //2020-3-26
+      // Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+      Counter('get', `?where=${encodeURIComponent(JSON.stringify({ url: { '$in': entries } }))}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=Ow53V4vYCyxtcWnamhyfq4Ap-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : 'Ow53V4vYCyxtcWnamhyfq4Ap-gzGzoHsz',
+            'X-LC-Key'    : '3gHd2WiLdR4UuRzpMGNSXQgf',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

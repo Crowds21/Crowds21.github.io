@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"crowds21.top","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Android3-BitmapAndroid作业3 [TOC]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android-Bitmap">
+<meta property="og:url" content="crowds21.top/2020/03/30/Android3/index.html">
+<meta property="og:site_name" content="Crowds21">
+<meta property="og:description" content="Android3-BitmapAndroid作业3 [TOC]">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="crowds21.top/2020/03/30/Android3/image-20200330184725177.png">
+<meta property="og:image" content="crowds21.top/2020/03/30/Android3/image-20200330184709855.png">
+<meta property="og:image" content="crowds21.top/2020/03/30/Android3/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://developer.android.google.cn/guide/components/images/activity_lifecycle.png">
+<meta property="article:published_time" content="2020-03-30T11:35:00.000Z">
+<meta property="article:modified_time" content="2020-03-31T11:57:59.640Z">
+<meta property="article:author" content="Crowds">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="crowds21.top/2020/03/30/Android3/image-20200330184725177.png">
+
+<link rel="canonical" href="crowds21.top/2020/03/30/Android3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>Android-Bitmap | Crowds21</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a7c71f33be5113656f9ec7859c6a3724";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Crowds21</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>Schedule</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="crowds21.top/2020/03/30/Android3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="Crowds">
+      <meta itemprop="description" content="Thinking is a good servant,<br/>but a bad master">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Crowds21">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android-Bitmap
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-03-30 19:35:00" itemprop="dateCreated datePublished" datetime="2020-03-30T19:35:00+08:00">2020-03-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-31 19:57:59" itemprop="dateModified" datetime="2020-03-31T19:57:59+08:00">2020-03-31</time>
+              </span>
+
+          
+            <span id="/2020/03/30/Android3/" class="post-meta-item leancloud_visitors" data-flag-title="Android-Bitmap" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Android3-Bitmap"><a href="#Android3-Bitmap" class="headerlink" title="Android3-Bitmap"></a>Android3-Bitmap</h1><p>Android作业3</p>
+<p>[TOC]</p>
+<a id="more"></a>
+
+<h2 id="结果预览"><a href="#结果预览" class="headerlink" title="结果预览"></a>结果预览</h2><img src="image-20200330184725177.png" alt="image-20200330184725177" style="zoom:33%;" />
+
+<img src="image-20200330184709855.png" alt="image-20200330184709855" style="zoom:33%;" />
+
+<h2 id="可绘制对象概览"><a href="#可绘制对象概览" class="headerlink" title="可绘制对象概览"></a>可绘制对象概览</h2><blockquote>
+<p>继续练习阅读官方文档</p>
+</blockquote>
+<p><a href="https://developer.android.google.cn/guide/topics/graphics/drawables" target="_blank" rel="noopener">官方文档：</a></p>
+<h4 id="通过drawable-绘制"><a href="#通过drawable-绘制" class="headerlink" title="通过drawable  绘制"></a>通过drawable  绘制</h4><p>通过引用项目资源中的图片文件向您的应用添加图形。支持的文件类型包括 PNG（首选）、JPG（可接受）和 GIF（不推荐）。这种方法非常适合添加应用图标、徽标和其他图形（例如游戏中使用的图形）。</p>
+<p>相应文件添加到项目的 <code>res/drawable/</code> 目录下。在项目中，您可以从代码或 XML 布局中引用图片资源。无论是哪种方式，都是通过资源 ID（不包含文件类型扩展名的文件名）引用的。</p>
+<blockquote>
+<p>文档中有提及到 <code>aapt</code> 工具在构建过程中自动完成无损图片压缩优化。 </p>
+<p>我目前看不懂，没接触过</p>
+</blockquote>
+<p>官方文档范例代码，通过Java代码而非XML文件创建视图的过程</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">ConstraintLayout constraintLayout;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line"></span><br><span class="line">     <span class="comment">// 创建一个ConstraintLayout，在其中添加ImageView</span></span><br><span class="line">     constraintLayout = <span class="keyword">new</span> ConstraintLayout(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">     <span class="comment">//实例化ImageView并定义其属性</span></span><br><span class="line">     ImageView i = <span class="keyword">new</span> ImageView(<span class="keyword">this</span>);</span><br><span class="line">     i.setImageResource(R.drawable.my_image);</span><br><span class="line">     i.setContentDescription(getResources().getString(R.string.my_image_desc));</span><br><span class="line"></span><br><span class="line">     <span class="comment">// 设置ImageView边界以匹配Drawable的维度</span></span><br><span class="line">     i.setAdjustViewBounds(<span class="keyword">true</span>);</span><br><span class="line">     i.setLayoutParams(<span class="keyword">new</span> ViewGroup.LayoutParams(</span><br><span class="line">             ViewGroup.LayoutParams.WRAP_CONTENT,</span><br><span class="line">             ViewGroup.LayoutParams.WRAP_CONTENT));</span><br><span class="line"></span><br><span class="line">     <span class="comment">// /将ImageView添加到布局并将布局设置为内容视图。</span></span><br><span class="line">     constraintLayout.addView(i);</span><br><span class="line">     setContentView(constraintLayout);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>将图片资源作为 <code>Drawable</code> 对象进行处理，如下例所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Resources res = context.getResources();</span><br><span class="line">Drawable myImage = ResourcesCompat.getDrawable(res, R.drawable.my_image, <span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="通过XML-创建"><a href="#通过XML-创建" class="headerlink" title="通过XML 创建"></a>通过XML 创建</h4><p>文档中建议，如果<code>Drawable</code> 对象最初并不依赖于由我们的代码定义的变量或用户互动，则最好在 XML 中定义 <code>Drawable</code>。即使您预期 <code>Drawable</code> 在用户与我们的应用互动时属性会更改，我们也应考虑在 XML 中定义该对象，因为我们可以在对其进行实例化之后修改其属性。</p>
+<p>在 XML 中定义 <code>Drawable</code> 之后，将文件保存在项目的 <code>res/drawable/</code> 目录下。以下示例展示了定义 <code>TransitionDrawable</code> 资源（继承自 <code>Drawable</code>）的 XML：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- res/drawable/expand_collapse.xml --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">transition</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/image_expand"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/image_collapse"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">transition</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后，通过调用 <code>Resources.getDrawable()</code> 并传入 XML 文件的资源 ID 来检索并实例化相应对象。支持 <code>inflate()</code> 方法的任何 <code>Drawable</code> 子类都可以在 XML 中进行定义并由您的应用实例化。支持 XML 扩充的各个可绘制类利用特定的 XML 属性来帮助定义对象属性。以下代码会实例化 <code>TransitionDrawable</code> 并将其设置为 <code>ImageView</code> 对象的内容：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Resources res = context.getResources();<span class="comment">//获取存在系统的资源</span></span><br><span class="line">TransitionDrawable transition =</span><br><span class="line">        (TransitionDrawable) ResourcesCompat.getDrawable(res, R.drawable.expand_collapse, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">ImageView image = (ImageView) findViewById(R.id.toggle_image);</span><br><span class="line">image.setImageDrawable(transition);</span><br><span class="line"></span><br><span class="line"><span class="comment">//drawable表示的初始状态的描述。.</span></span><br><span class="line">image.setContentDescription(getResources().getString(R.string.collapsed));</span><br><span class="line"></span><br><span class="line"><span class="comment">//然后可以调用可传递可绘制对象的方法。</span></span><br><span class="line">transition.startTransition(<span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 转换完成后，更改图像的内容描述</span></span><br><span class="line"><span class="comment">// 以反映新的状态。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="形状可绘制对象"><a href="#形状可绘制对象" class="headerlink" title="形状可绘制对象"></a>形状可绘制对象</h3><p>如果您想动态绘制二维图形，<code>ShapeDrawable</code> 对象是一种不错的选择。您可以程序化地在 <code>ShapeDrawable</code> 对象上绘制基元形状，并采用您的应用所需的样式。</p>
+<h3 id="NinePatch-可绘制对象"><a href="#NinePatch-可绘制对象" class="headerlink" title="NinePatch 可绘制对象"></a>NinePatch 可绘制对象</h3><p><code>NinePatchDrawable</code> 图形是一种可拉伸的位图，可用作视图的背景。Android 会自动调整图形的大小以适应视图的内容。NinePatch 图片的其中一项用途是用作标准 Android 按钮（按钮必须拉伸以适应各种长度的字符串）的背景。NinePatch 图形是标准 PNG 图片，包含一个额外的 1 像素边框。必须使用 <code>9.png</code> 扩展名将其保存在项目的 <code>res/drawable/</code> 目录下。</p>
+<h3 id="自定义可绘制对象"><a href="#自定义可绘制对象" class="headerlink" title="自定义可绘制对象"></a>自定义可绘制对象</h3><p>如果您想创建一些自定义可绘制对象，可以通过扩展 <code>Drawable</code> 类（或其任何子类）来实现。</p>
+<p>要实现的最重要方法是 <code>draw(Canvas)</code>，因为它提供了您在提供绘制指令时必须使用的 <code>Canvas</code> 对象。</p>
+<blockquote>
+<p>简例</p>
+</blockquote>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDrawable</span> <span class="keyword">extends</span> <span class="title">Drawable</span> </span>&#123;</span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">final</span> Paint redPaint;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="title">MyDrawable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">           <span class="comment">// Set up color and text size</span></span><br><span class="line">           redPaint = <span class="keyword">new</span> Paint();</span><br><span class="line">           redPaint.setARGB(<span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(Canvas canvas)</span> </span>&#123;</span><br><span class="line">           <span class="comment">// Get the drawable's bounds</span></span><br><span class="line">           <span class="keyword">int</span> width = getBounds().width();</span><br><span class="line">           <span class="keyword">int</span> height = getBounds().height();</span><br><span class="line">           <span class="keyword">float</span> radius = Math.min(width, height) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">           <span class="comment">// Draw a red circle in the center</span></span><br><span class="line">           canvas.drawCircle(width/<span class="number">2</span>, height/<span class="number">2</span>, radius, redPaint);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAlpha</span><span class="params">(<span class="keyword">int</span> alpha)</span> </span>&#123;</span><br><span class="line">           <span class="comment">// This method is required</span></span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setColorFilter</span><span class="params">(ColorFilter colorFilter)</span> </span>&#123;</span><br><span class="line">           <span class="comment">// This method is required</span></span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getOpacity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">           <span class="comment">// Must be PixelFormat.UNKNOWN, TRANSLUCENT, TRANSPARENT, or OPAQUE</span></span><br><span class="line">           <span class="keyword">return</span> PixelFormat.OPAQUE;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后，您可以将可绘制对象添加到任意位置；例如添加到 <code>ImageView</code>（如下所示）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MyDrawable mydrawing = <span class="keyword">new</span> MyDrawable();</span><br><span class="line">ImageView image = findViewById(R.id.imageView);</span><br><span class="line">image.setImageDrawable(mydrawing);</span><br><span class="line">   image.setContentDescription(getResources().getString(R.string.my_image_desc));</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在 Android 7.0（API 级别 24）及更高版本上，您还可以使用 XML 定义自定义可绘制对象的实例,具体请参考文档</p>
+<h2 id="Android-Bitmap详解"><a href="#Android-Bitmap详解" class="headerlink" title="Android Bitmap详解"></a><a href="https://www.cnblogs.com/winter-is-coming/p/9112192.html" target="_blank" rel="noopener">Android Bitmap详解</a></h2><p>Google Developer: <a href="https://developer.android.com/reference/android/graphics/Bitmap" target="_blank" rel="noopener">Bitmap</a></p>
+<h3 id="一、基本信息"><a href="#一、基本信息" class="headerlink" title="一、基本信息"></a>一、基本信息</h3><p>Bitmap位图包括像素以及长、宽、颜色等描述信息。长宽和像素位数是用来描述图片的，可以通过这些信息计算出图片的像素占用内存的大小。</p>
+<p>位图可以理解为一个画架，把图放到上面然后可以对图片做一些列的处理。</p>
+<p>位图文件图像显示效果好，但是非压缩格式，需要占用较大的存储空间。</p>
+<h5 id="1-Config："><a href="#1-Config：" class="headerlink" title="1. Config："></a>1. Config：</h5><p>表示图片像素类型，包括ALPHA_8、RGB_565、ARGB_4444、ARGB_8888 A：透明度；RGB分别是Red、Green、Blue，三种原色</p>
+<p>ARGB_8888：四个通道都是8位，每个像素占用4个字节，图片质量是最高的，但是占用的内存也是最大的；</p>
+<p>ARGB_4444：四个通道都是4位，每个像素占用2个字节，图片的失真比较严重；</p>
+<p>RGB_565：没有A通道，每个像素占用2个字节，图片失真小，但是没有透明度；</p>
+<p>ALPHA_8：只有A通道，每个像素占用1个字节大大小，只有透明度，没有颜色值。</p>
+<p>使用场景总结：ARGB_4444失真严重，基本不用；ALPHA_8使用场景特殊，比如设置遮盖效果等；不需要设置透明度，RGB_565是个不错的选择；既要设置透明度，对图片质量要求又高，就用ARGB_8888。</p>
+<h5 id="2-CompressFormat："><a href="#2-CompressFormat：" class="headerlink" title="2. CompressFormat："></a>2. CompressFormat：</h5><p>Bitmap.CompressFormat.JPEG、Bitmap.CompressFormat.PNG、Bitmap.CompressFormat.WEBP三种压缩格式</p>
+<p>JPEG：一种有损压缩（JPEG2000既可以有损也可以无损），”.jpg”或者”.jpeg”; 优点：采用了直接色，有丰富的色彩，适合存储照片和生动图像效果；缺点：有损，不适合用来存储logo、线框类图。</p>
+<p>PNG: 一种无损压缩，”.png”; 优点：支持透明、无损，主要用于小图标，透明背景等；缺点：若色彩复杂，则图片生成后文件很大；</p>
+<p>WEBP:以WebP算法进行压缩；Google开发的新的图片格式，同时支持无损和有损压缩，使用直接色。无损压缩，相同质量的webp比PNG小大约26%；有损压缩，相同质量的webp比JPEG小25%-34% 支持动图，基本取代gif</p>
+<p>详细介绍参见 <a href="https://zhuanlan.zhihu.com/p/23648251" target="_blank" rel="noopener">【转】WebP原理和支持现状</a></p>
+<h3 id="二、加载"><a href="#二、加载" class="headerlink" title="二、加载"></a>二、加载</h3><h4 id="BitmapFactory"><a href="#BitmapFactory" class="headerlink" title="BitmapFactory"></a>BitmapFactory</h4><p>BitmapFactory提供了四类方法：decodeFile、decodeResource、decodeStream、decodeByteArray</p>
+<h5 id="1-从文件中读取"><a href="#1-从文件中读取" class="headerlink" title="1.从文件中读取"></a>1.从文件中读取</h5><p><a href="javascript:void(0);"><img src="copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    FileInputStream in = <span class="keyword">new</span> FileInputStream(<span class="string">"/sdcard/Download/sample.png"</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Bitmap bitmap = BitmapFactory.decodeStream(in);Bitmap bm = BitmapFactory.decodeFile(sd_path); <span class="comment">// 间接调用 BitmapFactory.decodeStream</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<h5 id="2-从资源中读取"><a href="#2-从资源中读取" class="headerlink" title="2. 从资源中读取"></a>2. 从资源中读取</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bitmap bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.sample); <span class="comment">// 间接调用 BitmapFactory.decodeStream</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="3-从字节序列里读取"><a href="#3-从字节序列里读取" class="headerlink" title="3. 从字节序列里读取"></a>3. 从字节序列里读取</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// InputStream转换成byte[]</span></span><br><span class="line">Bitmap bm = BitmapFactory.decodeByteArray(myByte,<span class="number">0</span>,myByte.length);</span><br></pre></td></tr></table></figure>
+
+<h5 id="巨图加载：BitmapRegionDecoder，可以按照区域进行加载"><a href="#巨图加载：BitmapRegionDecoder，可以按照区域进行加载" class="headerlink" title="巨图加载：BitmapRegionDecoder，可以按照区域进行加载"></a>巨图加载：BitmapRegionDecoder，可以按照区域进行加载</h5><h5 id="高效加载：核心其实也很简单，主要是采样压缩、缓存策略、异步加载等"><a href="#高效加载：核心其实也很简单，主要是采样压缩、缓存策略、异步加载等" class="headerlink" title="高效加载：核心其实也很简单，主要是采样压缩、缓存策略、异步加载等"></a>高效加载：核心其实也很简单，主要是采样压缩、缓存策略、异步加载等</h5><h5 id="1-采样压缩-（-gt-【自】高斯模糊）"><a href="#1-采样压缩-（-gt-【自】高斯模糊）" class="headerlink" title="1. 采样压缩 （-&gt; 【自】高斯模糊）"></a>1. 采样压缩 （-&gt; <a href="https://wiki.bytedance.net/pages/viewpage.action?pageId=78351058" target="_blank" rel="noopener">【自】高斯模糊</a>）</h5><p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">BitmapFactory.Options options = <span class="keyword">new</span> BitmapFactory.Options();  </span><br><span class="line"><span class="comment">//inJustDecodeBounds为true，不返回bitmap，只返回这个bitmap的尺寸  </span></span><br><span class="line">options.inJustDecodeBounds = <span class="keyword">true</span>; BitmapFactory.decodeResource(getResources(), images[position], options);  </span><br><span class="line"><span class="comment">//利用返回的原图片的宽高，我们就可以计算出缩放比inSampleSize（只能是2的整数次幂）options.inSampleSize = caluelateInSampleSize(options, reqWidth, reqHeight);//使用RGB_565减少图片大小  </span></span><br><span class="line">options.inPreferredConfig = Bitmap.Config.RGB_565;  </span><br><span class="line"><span class="comment">//释放内存，共享引用（21版本后失效）  </span></span><br><span class="line">options.inPurgeable = <span class="keyword">true</span>;  </span><br><span class="line">options.inInputShareable = <span class="keyword">true</span>;  </span><br><span class="line">             </span><br><span class="line"><span class="comment">//inJustDecodeBounds为false，返回bitmap  </span></span><br><span class="line">options.inJustDecodeBounds = <span class="keyword">false</span>;  </span><br><span class="line">Bitmap bitmap = BitmapFactory.decodeResource(getResources(), images[position], options);</span><br></pre></td></tr></table></figure>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">calculateSampleSize</span><span class="params">(BitmapFactory.Options options,<span class="keyword">int</span> reqWidth,<span class="keyword">int</span> reqHeight)</span></span>&#123;<span class="keyword">int</span> width = options.outWidth;</span><br><span class="line">    <span class="keyword">int</span> height =options.outHeight;<span class="keyword">int</span> inSampleSize = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> halfWidth = width / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> halfHeight = height / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">while</span>((halfWidth / inSampleSize) &gt;= reqWidth &amp;&amp; (halfHeight / inSampleSize) &gt;= reqHeight)&#123;</span><br><span class="line">        inSampleSize *= <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> inSampleSize;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<ol start="2">
+<li><h5 id="缓存策略"><a href="#缓存策略" class="headerlink" title="缓存策略"></a>缓存策略</h5></li>
+</ol>
+<p>LRU(最近最少使用) -&gt; LruCache和DiskLruCache，LruCache用于内存缓存、DiskLruCache用户存储设备缓存</p>
+<p><a href="https://github.com/desmond1121/Fresco-Source-Analysis/blob/master/Fresco源码分析(6" target="_blank" rel="noopener">【转】Fresco缓存分析</a> - 缓存.md) </p>
+<p> <a href="https://www.cnblogs.com/winter-is-coming/p/9120660.html" target="_blank" rel="noopener">【自】密码学基础</a></p>
+<ol start="3">
+<li><h5 id="异步加载"><a href="#异步加载" class="headerlink" title="异步加载"></a>异步加载</h5></li>
+</ol>
+<p><a href="https://github.com/desmond1121/Fresco-Source-Analysis/blob/master/Fresco源码分析(4" target="_blank" rel="noopener">【转】Fresco异步加载</a> - 异步加载数据.md)：线程池、Handler等</p>
+<h3 id="三、存储"><a href="#三、存储" class="headerlink" title="三、存储"></a>三、存储</h3><p>根据android sdk版本有所不同。</p>
+<p>2.3以前：图片像素存储在native内存中。缺点是虚拟机无法自动进行垃圾回收，必须手动使用recycle，很容易导致内存泄露。也不方便调试等；</p>
+<p>3.0以后：图片像素存储在Java堆中，垃圾回收能够自动进行，内存占用也能方便的展示在monitor中；</p>
+<p>4.0以后：传输方式发生变化，大数据会通过ashmem（匿名共享内存）来传递（不占用Java内存），小数据通过直接拷贝的方式（在内存中操作），放宽了图片大小的限制；</p>
+<p><a href="https://blog.csdn.net/xxxzhi/article/details/51531098" target="_blank" rel="noopener">【转】Android4.0 Bitmap Parcel传输源码分析</a></p>
+<p>6.0以后：加强了ashmen存储图片的方式</p>
+<p><a href="https://blog.csdn.net/xxxzhi/article/details/51490253" target="_blank" rel="noopener">【转】Android6.0 Bitmap存储以及Parcel传输源码分析</a></p>
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">PixelStorageType</span> </span>&#123;</span><br><span class="line">    Invalid,</span><br><span class="line">    External,</span><br><span class="line">    Java,</span><br><span class="line">    Ashmem,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<p>Fresco 5.0以前将图片存储在Ashmen中，不会自动GC，因为不在Java堆中，也不会造成OOM，很大的一个优势。5.0以后系统默认启用了Ashmen模式。</p>
+<h3 id="四、转换"><a href="#四、转换" class="headerlink" title="四、转换"></a>四、转换</h3><p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义矩阵</span></span><br><span class="line">Matrix matrix = <span class="keyword">new</span> Matrix();  </span><br><span class="line"><span class="comment">// 【缩放图像】</span></span><br><span class="line">matrix.postScale(<span class="number">0.8f</span>, <span class="number">0.9f</span>);  </span><br><span class="line"><span class="comment">// 【向左旋转】</span></span><br><span class="line">matrix.postRotate(-<span class="number">90</span>);  </span><br><span class="line"><span class="comment">// 【移动图像】</span></span><br><span class="line">matrix.postTranslate(<span class="number">100</span>, <span class="number">100</span>);</span><br><span class="line"><span class="comment">// 【裁减图像】</span></span><br><span class="line">Bitmap.createBitmap(Bitmap source, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> width, <span class="keyword">int</span> height, Matrix m, <span class="keyword">boolean</span> filter)</span><br></pre></td></tr></table></figure>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 【圆角】// 准备画笔</span></span><br><span class="line">Paint paint = <span class="keyword">new</span> Paint();</span><br><span class="line">paint.setAntiAlias(<span class="keyword">true</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 准备裁剪的矩阵</span></span><br><span class="line">Rect rect = <span class="keyword">new</span> Rect(<span class="number">0</span>, <span class="number">0</span>, originBitmap.getWidth(), originBitmap.getHeight());</span><br><span class="line">RectF rectF = <span class="keyword">new</span> RectF(<span class="keyword">new</span> Rect(<span class="number">0</span>, <span class="number">0</span>, originBitmap.getWidth(), originBitmap.getHeight()));</span><br><span class="line"> </span><br><span class="line">Bitmap roundBitmap = Bitmap.createBitmap(originBitmap.getWidth(), originBitmap.getHeight(), Bitmap.Config.ARGB_8888);</span><br><span class="line">Canvas canvas = <span class="keyword">new</span> Canvas(roundBitmap);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 圆角矩阵，radius为圆角大小</span></span><br><span class="line">canvas.drawRoundRect(rectF, radius, radius, paint);</span><br><span class="line"></span><br><span class="line">paint.setXfermode(<span class="keyword">new</span> PorterDuffXfermode(PorterDuff.Mode.SRC_IN)); <span class="comment">// 这个比较有意思，混合模式  SRC_IN:显示交汇SRC图</span></span><br><span class="line">canvas.drawBitmap(originBitmap, rect, rect, paint);</span><br></pre></td></tr></table></figure>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<p><a href="https://blog.csdn.net/allen315410/article/details/45077165" target="_blank" rel="noopener">【转】ndroid图像处理-Paint之Xfermode</a></p>
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;【图片灰阶处理】</span><br><span class="line">Bitmap grayBitmap &#x3D; Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Config.ARGB_8888);  </span><br><span class="line">Canvas canvas &#x3D; new Canvas(grayBitmap);  </span><br><span class="line">Paint mPaint &#x3D; new Paint();  </span><br><span class="line">              </span><br><span class="line">&#x2F;&#x2F;创建颜色变换矩阵  </span><br><span class="line">ColorMatrix colorMatrix &#x3D; new ColorMatrix();  </span><br><span class="line">&#x2F;&#x2F;设置饱和度为0，实现灰阶效果</span><br><span class="line">colorMatrix.setSaturation(0);  </span><br><span class="line">&#x2F;&#x2F;创建颜色过滤矩阵  </span><br><span class="line">ColorMatrixColorFilter colorFilter &#x3D; new ColorMatrixColorFilter(colorMatrix);  </span><br><span class="line">&#x2F;&#x2F;设置画笔的颜色过滤矩阵  </span><br><span class="line">paint.setColorFilter(colorFilter);  </span><br><span class="line">&#x2F;&#x2F;使用处理后的画笔绘制图像  </span><br><span class="line">canvas.drawBitmap(bitmap, 0, 0, paint);</span><br></pre></td></tr></table></figure>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 【Alpha位图】</span><br><span class="line">&#x2F;&#x2F; 【倒影】</span><br><span class="line">&#x2F;&#x2F; 【图像合成】</span><br><span class="line">&#x2F;&#x2F; 无穷无尽啊...</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="五、内存优化"><a href="#五、内存优化" class="headerlink" title="五、内存优化"></a>五、内存优化</h3><p>基于前面的原理来进行各方面的优化处理，缩放、Config、Compress选择、内存管理、缓存方式等等方面入手</p>
+<h3 id="六、开源框架"><a href="#六、开源框架" class="headerlink" title="六、开源框架"></a>六、开源框架</h3><p>ImageLoader、Glide（google）、Fresco（FaceBook）、Picasso（Square）</p>
+<p>Picasso包体积小、清晰，但功能有局限不能加载gif、只能缓存全尺寸；</p>
+<p>Glide功能全面，擅长大型图片流，提交较大；</p>
+<p>Fresco内存优化，减少oom，体积更大</p>
+<p>【要求：起码阅读Glide和Fresco源码！】</p>
+<h2 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h2><blockquote>
+<p> 继续练习读部分官方文档</p>
+</blockquote>
+<p><code>Canvas</code>类用来保存“绘画”相关的调用。如果想要画一些东西，你需要四个基础的组件 <code>components</code></p>
+<ul>
+<li>Bitmap 来保存像素的位图</li>
+<li>Canvas来承载调用的画布（写入位图）</li>
+<li>Drawing primitive 绘图原语（例如Rect、Path、text、Bitmap）</li>
+<li>Paint 绘图（描述绘图的颜色和样式）</li>
+</ul>
+<h3 id="Nested-classes-嵌套类"><a href="#Nested-classes-嵌套类" class="headerlink" title="Nested classes 嵌套类"></a>Nested classes 嵌套类</h3><ul>
+<li><a href="https://developer.android.google.cn/reference/android/graphics/Canvas.EdgeType?hl=zh-cn" target="_blank" rel="noopener">Canvas.EdgeType</a></li>
+<li><a href="https://developer.android.google.cn/reference/android/graphics/Canvas.VertexMode?hl=zh-cn" target="_blank" rel="noopener">Canvas.VertexMode</a></li>
+</ul>
+<h3 id="Constants常数"><a href="#Constants常数" class="headerlink" title="Constants常数"></a>Constants常数</h3><ul>
+<li><p>| <code>int</code> | <code>ALL_SAVE_FLAG</code> | Restore everything when restore() is called (standard save flags). |</p>
+<p>  | —– | ————— | ———————————————————— |<br>  |       |                 |                                                              |</p>
+</li>
+</ul>
+<h3 id="Public-constructors-构造体"><a href="#Public-constructors-构造体" class="headerlink" title="Public constructors 构造体"></a>Public constructors 构造体</h3><table>
+<thead>
+<tr>
+<th align="left"><a href="https://developer.android.google.cn/reference/android/graphics/Canvas?hl=zh-cn#Canvas()" target="_blank" rel="noopener">Canvas</a>()</th>
+<th>构造一个空像素光画布</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a href="https://developer.android.google.cn/reference/android/graphics/Canvas?hl=zh-cn#Canvas(android.graphics.Bitmap)" target="_blank" rel="noopener">Canvas</a>(<a href="https://developer.android.google.cn/reference/android/graphics/Bitmap?hl=zh-cn" target="_blank" rel="noopener">Bitmap</a> bitmap)</td>
+<td>使用要绘制的指定位图构造画布。</td>
+</tr>
+</tbody></table>
+<h3 id="Public-methods-公共方法"><a href="#Public-methods-公共方法" class="headerlink" title="Public methods  公共方法"></a>Public methods  公共方法</h3><table>
+<thead>
+<tr>
+<th><code>boolean</code></th>
+<th><code>clipOutPath(Path path)</code></th>
+<th>对画布按照path进行裁剪</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>boolean</code></td>
+<td>`clipOutRect(int left, int top, int right, int bottom)</td>
+<td>用局部坐标裁剪</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>clipOutRect(Rect rect)</code></td>
+<td>Set the clip to the difference of the current clip and the specified rectangle, which is expressed in local coordinates.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>void</code></td>
+<td><code>concat(Matrix matrix)</code></td>
+<td>对matrix（矩阵）的变换应用到canvas上的所有对象</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>void</code></td>
+<td><code>drawBitmap(Bitmap bitmap, Matrix matrix, Paint paint)</code></td>
+<td>使用指定的矩阵绘制位图。</td>
+</tr>
+<tr>
+<td><code>void</code></td>
+<td><code>drawBitmap(int[] colors, int offset, int stride, float x, float y, int width, int height, boolean hasAlpha, Paint paint)</code></td>
+<td>此方法在API级别21中已弃用。</td>
+</tr>
+<tr>
+<td><code>void</code></td>
+<td><code>drawBitmap(Bitmap bitmap, Rect src, Rect dst, Paint paint)</code></td>
+<td>绘制指定的位图，自动缩放/转换以填充目标矩形。(Rect矩形包含矩形的四个整数坐标)</td>
+</tr>
+<tr>
+<td><code>void</code></td>
+<td><code>drawBitmap(Bitmap bitmap, Rect src, RectF dst, Paint paint)</code></td>
+<td>绘制指定的位图，自动缩放/转换以填充目标矩形。（参数RectF 为矩形保留四个浮点坐标 ）</td>
+</tr>
+<tr>
+<td><code>void</code></td>
+<td><code>drawBitmap(Bitmap bitmap, float left, float top, Paint paint)</code></td>
+<td>使用指定的绘制方法绘制指定的位图，其上/左角位于（x，y），由当前矩阵变换。</td>
+</tr>
+</tbody></table>
+<h2 id="问题以及解决"><a href="#问题以及解决" class="headerlink" title="问题以及解决"></a>问题以及解决</h2><h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p><a href="https://developer.android.google.cn/guide/components/activities/activity-lifecycle" target="_blank" rel="noopener">官方文档</a></p>
+<p>为了在 Activity 生命周期的各个阶段之间导航转换，Activity 类提供六个核心回调：</p>
+<ul>
+<li><p><code>onCreate()</code></p>
+<ul>
+<li><p>您必须实现此回调，其在系统首次创建 Activity 时触发。Activity 会在创建后进入<em>已创建</em>状态。在 <code>onCreate()</code> 方法中，您需执行基本应用启动逻辑，该逻辑在 Activity 的整个生命周期中只应发生一次。例如，<a href="https://developer.android.google.cn/reference/android/app/Activity#onCreate(android.os.Bundle)" target="_blank" rel="noopener"><code>onCreate()</code></a> 的实现可能会将数据绑定到列表，将 Activity 与 <a href="https://developer.android.google.cn/reference/androidx/lifecycle/ViewModel" target="_blank" rel="noopener"><code>ViewModel</code></a> 相关联，并实例化某些类范围变量。此方法接收 <code>savedInstanceState</code> 参数，后者是包含 Activity 先前保存状态的 <code>Bundle</code> 对象。如果 Activity 此前未曾存在，则 <code>Bundle</code> 对象的值为 null。</p>
+<p>  如果您有一个具有生命周期感知能力的组件与您的 Activity 生命周期相关联，则该组件将收到 <a href="https://developer.android.google.cn/reference/androidx/lifecycle/Lifecycle.Event#ON_CREATE" target="_blank" rel="noopener"><code>ON_CREATE</code></a> 事件。系统将调用经过 @OnLifecycleEvent 注释的方法，以使您具有生命周期感知能力的组件可以执行已创建状态所需的任何设置代码。</p>
+</li>
+</ul>
+</li>
+<li><p><code>onStart()</code></p>
+<ul>
+<li><p>当 Activity 进入“已开始”状态时，系统会调用此回调。<code>onStart()</code> 调用使 Activity 对用户可见，因为应用会为 Activity 进入前台并支持交互做准备。例如，应用通过此方法来初始化维护界面的代码。</p>
+<p>  当 Activity 进入已开始状态时，与 Activity 生命周期相关联的所有具有生命周期感知能力的组件都将收到 <a href="https://developer.android.google.cn/reference/androidx/lifecycle/Lifecycle.Event#ON_START" target="_blank" rel="noopener"><code>ON_START</code></a> 事件。</p>
+<p>  <code>onStart()</code> 方法会非常快速地完成，并且与“已创建”状态一样，Activity 不会一直处于“已开始”状态。一旦此回调结束，Activity 便会进入<em>已恢复</em>状态，系统将调用 <code>onResume()</code> 方法。</p>
+</li>
+</ul>
+</li>
+<li><p><code>onResume()</code></p>
+<ul>
+<li><p>Activity 会在进入“已恢复”状态时来到前台，然后系统调用 <code>onResume()</code> 回调。这是应用与用户交互的状态。应用会一直保持这种状态，直到某些事件发生，让焦点远离应用。此类事件包括接到来电、用户导航到另一个 Activity，或设备屏幕关闭。</p>
+<p>  当 Activity 进入已恢复状态时，与 Activity 生命周期相关联的所有具有生命周期感知能力的组件都将收到 <a href="https://developer.android.google.cn/reference/androidx/lifecycle/Lifecycle.Event#ON_RESUME" target="_blank" rel="noopener"><code>ON_RESUME</code></a> 事件。这时，生命周期组件可以启动任何需要在组件可见，且位于前台时运行的功能，例如启动摄像头预览。</p>
+<p>  当发生中断事件时，Activity 进入<em>已暂停</em>状态，系统调用 <code>onPause()</code> 回调。</p>
+<p>  如果 Activity 从“已暂停”状态返回“已恢复”状态，系统将再次调用 <code>onResume()</code> 方法。因此，您应实现 <code>onResume()</code>，以初始化在 <a href="https://developer.android.google.cn/reference/android/app/Activity#onPause()" target="_blank" rel="noopener"><code>onPause()</code></a> 期间释放的组件，并执行每次 Activity 进入“已恢复”状态时必须完成的任何其他初始化操作。</p>
+</li>
+</ul>
+</li>
+<li><p><code>onPause()</code></p>
+<ul>
+<li>系统将此方法视为用户正在离开您的 Activity 的第一个标志（尽管这并不总是意味着活动正在遭到销毁）；此方法表示 Activity 不再位于前台（尽管如果用户处于多窗口模式，Activity 仍然可见）。使用 <a href="https://developer.android.google.cn/reference/android/app/Activity#onPause()" target="_blank" rel="noopener"><code>onPause()</code></a> 方法暂停或调整当 <a href="https://developer.android.google.cn/reference/android/app/Activity" target="_blank" rel="noopener"><code>Activity</code></a> 处于“已暂停”状态时不应继续（或应有节制地继续）的操作，以及您希望很快恢复的操作。</li>
+</ul>
+</li>
+<li><p><code>onStop()</code> </p>
+<ul>
+<li><p>如果您的 Activity 不再对用户可见，则说明其已进入<em>已停止</em>状态，因此系统将调用 <code>onStop()</code> 回调。举例而言，如果新启动的 Activity 覆盖整个屏幕，就可能会发生这种情况。如果系统已结束运行并即将终止，系统还可以调用 <code>onStop()</code>。</p>
+<p>  当 Activity 进入已停止状态时，与 Activity 生命周期相关联的所有具有生命周期感知能力的组件都将收到 <a href="https://developer.android.google.cn/reference/androidx/lifecycle/Lifecycle.Event#ON_STOP" target="_blank" rel="noopener"><code>ON_STOP</code></a> 事件。这时，生命周期组件可以停止任何无需在组件未在屏幕上可见时运行的功能。</p>
+<p>  在 <code>onStop()</code> 方法中，应用应释放或调整应用对用户不可见时的无用资源。</p>
+</li>
+</ul>
+</li>
+<li><p><code>onDestroy()</code></p>
+<ul>
+<li><p>销毁 Ativity 之前，系统会先调用 <a href="https://developer.android.google.cn/reference/android/app/Activity#onDestroy()" target="_blank" rel="noopener"><code>onDestroy()</code></a>。系统调用此回调的原因如下：</p>
+<ol>
+<li><p>Activity 正在结束（由于用户彻底关闭 Activity 或由于系统为 Activity 调用 <a href="https://developer.android.google.cn/reference/android/app/Activity#finish()" target="_blank" rel="noopener"><code>finish()</code></a>），或者</p>
+</li>
+<li><p>由于配置变更（例如设备旋转或多窗口模式），系统暂时销毁 Activity</p>
+<p>当 Activity 进入已销毁状态时，与 Activity 生命周期相关联的所有具有生命周期感知能力的组件都将收到 <a href="https://developer.android.google.cn/reference/androidx/lifecycle/Lifecycle.Event#ON_DESTROY" target="_blank" rel="noopener"><code>ON_DESTROY</code></a> 事件。此时，生命周期组件可以在 Activity 遭到销毁之前清理所需的任何数据。</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p>当 Activity 进入新状态时，系统会调用每个回调。</p>
+<p><img src="https://developer.android.google.cn/guide/components/images/activity_lifecycle.png" alt="img"></p>
+<h4 id="保存和恢复界面瞬态"><a href="#保存和恢复界面瞬态" class="headerlink" title="保存和恢复界面瞬态"></a>保存和恢复界面瞬态</h4><h5 id="使用-onSaveInstanceState-保存简单轻量的界面状态"><a href="#使用-onSaveInstanceState-保存简单轻量的界面状态" class="headerlink" title="使用 onSaveInstanceState() 保存简单轻量的界面状态"></a>使用 onSaveInstanceState() 保存简单轻量的界面状态</h5><h5 id="使用保存的实例状态恢复-Activity-界面状态"><a href="#使用保存的实例状态恢复-Activity-界面状态" class="headerlink" title="使用保存的实例状态恢复 Activity 界面状态"></a>使用保存的实例状态恢复 Activity 界面状态</h5><h4 id="onWindowFocusChanged触发简介"><a href="#onWindowFocusChanged触发简介" class="headerlink" title="onWindowFocusChanged触发简介"></a>onWindowFocusChanged触发简介</h4><blockquote>
+<p>用到了一个<code>onWindowFocusChanged</code> 的函数，但我暂时没有找到相关的官方说明文档，网上找到的资料大概是如果你想要做一个Activity一加载完毕，就触发什么的话 完全可以用这个</p>
+</blockquote>
+<h3 id="文件存储"><a href="#文件存储" class="headerlink" title="文件存储"></a>文件存储</h3><p><a href="https://me.csdn.net/AnneQiQi" target="_blank" rel="noopener">参考：幸运六叶草</a><br>java在使用流时,都会有一个缓冲区,按一种它认为比较高效的方法来发数据:把要发的数据先放到缓冲区,缓冲区放满以后再一次性发过去,而不是分开一次一次地发.<br>而<code>flush()</code>表示强制将缓冲区中的数据发送出去,不必等到缓冲区满.</p>
+<p>所以如果在用流的时候,没有用<code>flush()</code>这个方法,很多情况下会出现流的另一边读不到数据的问题,特别是在数据特别小的情况下.</p>
+<h3 id="请求应用权限"><a href="#请求应用权限" class="headerlink" title="请求应用权限"></a>请求应用权限</h3><p><a href="https://developer.android.google.cn/training/permissions/requesting" target="_blank" rel="noopener">参考：官方文档-请求应用权限</a></p>
+<p><a href="https://www.jianshu.com/p/57798618bd90" target="_blank" rel="noopener">参考: android6.0运行时权限详解</a></p>
+<h4 id="向清单添加权限"><a href="#向清单添加权限" class="headerlink" title="向清单添加权限"></a>向清单添加权限</h4><p>对于所有 Android 版本，要声明应用需要某项权限，请在应用清单中添加 <a href="https://developer.android.google.cn/guide/topics/manifest/uses-permission-element" target="_blank" rel="noopener">``</a> 元素，作为顶级 <a href="https://developer.android.google.cn/guide/topics/manifest/manifest-element" target="_blank" rel="noopener"><code>manifest</code></a>  元素的子项。例如，需要访问互联网的应用需在清单中添加以下代码行：</p>
+<p>  <code>android:name=&quot;android.permission.INTERNET&quot;</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">package</span>=<span class="string">"com.example.snazzyapp"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">       <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span>/&gt;</span></span><br><span class="line">       <span class="comment">&lt;!-- other permissions go here --&gt;</span></span><br><span class="line"></span><br><span class="line">       <span class="tag">&lt;<span class="name">application</span> <span class="attr">...</span>&gt;</span></span><br><span class="line">           ...</span><br><span class="line">       <span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="检查权限"><a href="#检查权限" class="headerlink" title="检查权限"></a>检查权限</h4><p>要检查您是否具有某项权限，请调用 <code>ContextCompat.checkSelfPermission()</code> 方法。例如，以下代码段展示了如何检查 Activity 是否具有向日历写入数据的权限：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (ContextCompat.checkSelfPermission(thisActivity, Manifest.permission.WRITE_CALENDAR)</span><br><span class="line">           != PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">       <span class="comment">// Permission is not granted</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果应用具有此权限，该方法将返回 <code>PERMISSION_GRANTED</code>，并且应用可以继续操作。如果应用不具备此权限，该方法将返回 <code>PERMISSION_DENIED</code>，且应用必须明确要求用户授予权限。</p>
+<h4 id="请求权限"><a href="#请求权限" class="headerlink" title="请求权限"></a>请求权限</h4><p>当您的应用从 <code>checkSelfPermission()</code> 收到 <code>PERMISSION_DENIED</code> 时，您需要提示用户授予该权限。</p>
+<p>Android 为您提供了几种可用来请求权限的方法（如 <code>requestPermissions()</code>）。调用这些方法时，会显示一个无法自定义的标准 Android 对话框。</p>
+<h5 id="解释为什么应用需要权限"><a href="#解释为什么应用需要权限" class="headerlink" title="解释为什么应用需要权限"></a>解释为什么应用需要权限</h5><p>您可以使用的一种方法是只在用户之前拒绝过该权限请求的情况下才提供解释。Android 提供了一种实用程序方法，即 <code>shouldShowRequestPermissionRationale()</code>。如果用户之前拒绝了该请求，该方法将返回 <code>true</code>；如果用户之前拒绝了某项权限并且选中了权限请求对话框中的<strong>不再询问</strong>选项，或者如果设备政策禁止该权限，该方法将返回 <code>false</code>。</p>
+<p>如果用户不断尝试使用需要某项权限的功能，但一直拒绝权限请求，这或许意味着，用户不理解为什么应用需要该权限才能提供这项功能。在这种情况下，显示解释或许是不错的做法。</p>
+<p><a href="https://developer.android.google.cn/training/permissions/usage-notes" target="_blank" rel="noopener">应用权限最佳做法</a>中提供了更多建议，指导您如何在请求权限时创造良好的用户体验。</p>
+<h5 id="在必要时请求成为默认处理程序"><a href="#在必要时请求成为默认处理程序" class="headerlink" title="在必要时请求成为默认处理程序"></a>在必要时请求成为默认处理程序</h5><p>有些应用依赖于访问与通话记录和短信有关的敏感用户信息。如果您想请求特定于通话记录和短信的权限，并将应用发布到 Play 商店，则必须在请求这些运行时权限之前提示用户将应用设置为“默认处理程序”以获得核心系统功能。</p>
+<p>如需详细了解默认处理程序（包括有关如何向用户显示默认处理程序提示的指南），<a href="https://developer.android.google.cn/guide/topics/permissions/default-handlers" target="_blank" rel="noopener">请参阅有关仅在默认处理程序中使用的权限的指南</a>。</p>
+<h5 id="请求您需要的权限"><a href="#请求您需要的权限" class="headerlink" title="请求您需要的权限"></a>请求您需要的权限</h5><p>如果您的应用还不具备它需要的权限，那么它必须调用一个 <code>requestPermissions()</code> 方法来请求相应权限。您的应用将传递它想要的权限，以及您指定用于识别此权限请求的整数请求代码。此方法异步运行。它会立即返回结果，并且在用户响应提示后，系统会利用相应结果来调用应用的回调方法，在调用过程中传递的请求代码与应用传递给 <code>requestPermissions()</code> 的请求代码相同。</p>
+<p>以下代码将检查应用是否具有读取用户联系人的权限。如果没有该权限，它会检查是否应显示需要该权限的解释，如果不需要解释，它会请求该权限：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Here, thisActivity is the current activity</span></span><br><span class="line">   <span class="keyword">if</span> (ContextCompat.checkSelfPermission(thisActivity,</span><br><span class="line">           Manifest.permission.READ_CONTACTS)</span><br><span class="line">           != PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">       <span class="comment">// Permission is not granted</span></span><br><span class="line">       <span class="comment">// Should we show an explanation?</span></span><br><span class="line">       <span class="keyword">if</span> (ActivityCompat.shouldShowRequestPermissionRationale(thisActivity,</span><br><span class="line">               Manifest.permission.READ_CONTACTS)) &#123;</span><br><span class="line">           <span class="comment">// Show an explanation to the user *asynchronously* -- don't block</span></span><br><span class="line">           <span class="comment">// this thread waiting for the user's response! After the user</span></span><br><span class="line">           <span class="comment">// sees the explanation, try again to request the permission.</span></span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           <span class="comment">// No explanation needed; request the permission</span></span><br><span class="line">           ActivityCompat.requestPermissions(thisActivity,</span><br><span class="line">                   <span class="keyword">new</span> String[]&#123;Manifest.permission.READ_CONTACTS&#125;,</span><br><span class="line">                   MY_PERMISSIONS_REQUEST_READ_CONTACTS);</span><br><span class="line"></span><br><span class="line">           <span class="comment">// MY_PERMISSIONS_REQUEST_READ_CONTACTS is an</span></span><br><span class="line">           <span class="comment">// app-defined int constant. The callback method gets the</span></span><br><span class="line">           <span class="comment">// result of the request.</span></span><br><span class="line">       &#125;</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">       <span class="comment">// Permission has already been granted</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>通过<code>ActivityCompat.requestPermissions(activity,permissions,requestCode)</code></p>
+<p>第二个参数是一个String数组,</p>
+<p>第三个参数是请求码便于在 <code>onRequestPermissionsResult</code> 方法中根据<code>requestCode</code>进行判断.</p>
+</blockquote>
+<p> <strong>注意</strong>：当您的应用调用 <code>requestPermissions()</code> 时，系统会向用户显示一个标准对话框。您的应用无法配置或更改该对话框。如果您需要向用户提供任何信息或解释，您应该在调用 <code>requestPermissions()</code> 之前这样做，如<a href="https://developer.android.google.cn/training/permissions/requesting#explain" target="_blank" rel="noopener">解释为什么应用需要权限</a>中所述。</p>
+<h5 id="处理权限请求响应"><a href="#处理权限请求响应" class="headerlink" title="处理权限请求响应"></a>处理权限请求响应</h5><p>当用户响应您应用的权限请求时，系统会调用您应用的 <code>onRequestPermissionsResult()</code> 方法，在调用过程中向其传递用户响应。您的应用必须替换该方法，以查明是否已向其授予相应权限。在回调过程中传递的请求代码与传递给 <code>requestPermissions()</code> 的请求代码相同。例如，如果应用请求 <code>READ_CONTACTS</code> 访问权限，则它可能采用以下回调方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode,</span></span></span><br><span class="line"><span class="function"><span class="params">            String[] permissions, <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (requestCode) &#123;</span><br><span class="line">            <span class="keyword">case</span> MY_PERMISSIONS_REQUEST_READ_CONTACTS: &#123;</span><br><span class="line">                <span class="comment">// If request is cancelled, the result arrays are empty.</span></span><br><span class="line">                <span class="keyword">if</span> (grantResults.length &gt; <span class="number">0</span></span><br><span class="line">                    &amp;&amp; grantResults[<span class="number">0</span>] == PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">                    <span class="comment">// permission was granted, yay! Do the</span></span><br><span class="line">                    <span class="comment">// contacts-related task you need to do.</span></span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// permission denied, boo! Disable the</span></span><br><span class="line">                    <span class="comment">// functionality that depends on this permission.</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// other 'case' lines to check for other</span></span><br><span class="line">            <span class="comment">// permissions this app might request.</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>系统显示的对话框说明了您的应用需要访问的<a href="https://developer.android.google.cn/guide/topics/security/permissions#perm-groups" target="_blank" rel="noopener">权限组</a>，它不会列出具体权限。</p>
+<p>例如，如果请求 <code>READ_CONTACTS</code> 权限，系统对话框只会说明您的应用需要访问设备的联系人。用户只需要针对每个权限组授予一次权限。</p>
+<p>如果您的应用请求该组中的其他任何权限（已在您的应用清单中列出），系统会自动授予这些权限。当您请求权限时，系统会调用您的 <code>onRequestPermissionsResult()</code> 回调方法并传递 <code>PERMISSION_GRANTED</code>，就像用户通过系统对话框明确同意了您的请求时的处理方式一样。</p>
+<p><strong>注意</strong>：您的应用仍需要明确请求它需要的每项权限，即使用户已授予同一组中的其他权限。此外，权限分组在将来的 Android 版本中可能会发生变化。您的代码不应依赖于特定权限属于或不属于同一组的假设。</p>
+<p>例如，假设您在应用清单中同时列出了 <code>READ_CONTACTS</code> 和 <code>WRITE_CONTACTS</code>。如果您请求 <code>READ_CONTACTS</code> 且用户授予了该权限，那么当您随后又请求 <code>WRITE_CONTACTS</code> 时，系统会立即授予您该权限，而无需与用户交互。</p>
+<p>如果用户拒绝了权限请求，您的应用应采取适当的措施。例如，您的应用可能会显示一个对话框，解释它为什么无法执行用户请求的需要该权限的操作。</p>
+<p>当系统要求用户授予某项权限时，用户可以选择告知系统不要再次请求该权限。在这种情况下，只要应用使用 <code>requestPermissions()</code> 再次请求该权限，系统就会立即拒绝请求。系统会调用您的 <code>onRequestPermissionsResult()</code> 回调方法并传递 <code>PERMISSION_DENIED</code>，就像用户再次明确拒绝了您的请求时的处理方式一样。如果设备政策禁止应用具有该权限，该方法也会返回 <code>false</code>。这意味着，当您调用 <code>requestPermissions()</code> 时，您不能假定已经发生与用户的任何直接交互。</p>
+<p>要在请求应用权限时提供最佳用户体验，另请参阅<a href="https://developer.android.google.cn/training/permissions/usage-notes" target="_blank" rel="noopener">应用权限最佳做法</a>。</p>
+<h5 id="其他资源"><a href="#其他资源" class="headerlink" title="其他资源"></a>其他资源</h5><p>如需详细了解权限，请阅读以下文章：</p>
+<ul>
+<li><a href="https://developer.android.google.cn/guide/topics/permissions/overview" target="_blank" rel="noopener">权限概览</a></li>
+<li><a href="https://developer.android.google.cn/training/permissions/usage-notes" target="_blank" rel="noopener">应用权限最佳做法</a></li>
+</ul>
+<p>如需详细了解如何请求权限，请下载以下示例应用：</p>
+<ul>
+<li><a href="https://github.com/googlesamples/android-RuntimePermissionsBasic/" target="_blank" rel="noopener">Android RuntimePermissionsBasic 示例</a></li>
+<li><a href="https://github.com/googlesamples/android-RuntimePermissions/" target="_blank" rel="noopener">Android RuntimePermissions 示例</a></li>
+</ul>
+<h3 id="额外"><a href="#额外" class="headerlink" title="额外"></a>额外</h3><h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><p>上述内容全部按要求完成后，<code>logcat</code>中仍然会出现错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2020-03-30 18:37:51.906 25743-25743&#x2F;? E&#x2F;ple.exercise3_: Unknown bits set in runtime_flags: 0x8000</span><br><span class="line">2020-03-30 18:37:52.109 25743-25860&#x2F;com.example.exercise3_1 E&#x2F;AwareLog: AtomicFileUtils: readFileLines file not exist: android.util.AtomicFile@e60b281</span><br></pre></td></tr></table></figure>
+
+<p>最后发现由于没有在配置文件中加入<code>requestLegacyExternalStorage</code>导致</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">application</span> <span class="attr">android:requestLegacyExternalStorage</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="按钮事件"><a href="#按钮事件" class="headerlink" title="按钮事件"></a>按钮事件</h4><p>可以通过<code>android:onClick</code> 直接绑定类中的按钮点击事件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ImageButton</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/btn_submit"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:onClick</span>=<span class="string">"save"</span></span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag">            <span class="attr">android:background</span>=<span class="string">"#FFF"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:src</span>=<span class="string">"@drawable/btn_sub_selector"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintBottom_toBottomOf</span>=<span class="string">"parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintEnd_toStartOf</span>=<span class="string">"@+id/btn_cancel"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintHorizontal_chainStyle</span>=<span class="string">"spread"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintStart_toStartOf</span>=<span class="string">"parent"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.exercise3_1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.annotation.NonNull;</span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> androidx.core.app.ActivityCompat;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.Manifest;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.content.pm.PackageManager;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Bitmap;</span><br><span class="line"><span class="keyword">import</span> android.graphics.BitmapFactory;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Canvas;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Color;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Matrix;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Paint;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Point;</span><br><span class="line"><span class="keyword">import</span> android.net.Uri;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.os.Environment;</span><br><span class="line"><span class="keyword">import</span> android.os.SystemClock;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"><span class="keyword">import</span> android.view.MotionEvent;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileNotFoundException;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String TAG = getClass().getSimpleName();</span><br><span class="line">    <span class="keyword">private</span> ImageView iv_show;</span><br><span class="line">    <span class="keyword">private</span> Bitmap copyBitmap;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> x;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> y;</span><br><span class="line">    <span class="keyword">private</span> Paint paint;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> paintsize = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">private</span> FileOutputStream fos;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//权限请求</span></span><br><span class="line">        ActivityCompat.requestPermissions(<span class="keyword">this</span>, <span class="keyword">new</span> String[]&#123;</span><br><span class="line">                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,</span><br><span class="line">                Manifest.permission.READ_EXTERNAL_STORAGE</span><br><span class="line">        &#125;, <span class="number">10001</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//处理权限请求响应</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, @NonNull String[] permissions, @NonNull <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onRequestPermissionsResult(requestCode, permissions, grantResults);</span><br><span class="line">        <span class="keyword">switch</span> (requestCode) &#123;</span><br><span class="line">            <span class="keyword">case</span>  <span class="number">10001</span>: &#123;</span><br><span class="line">                <span class="comment">// If request is cancelled, the result arrays are empty.</span></span><br><span class="line">                <span class="keyword">if</span> (grantResults.length &gt; <span class="number">0</span></span><br><span class="line">                        &amp;&amp; grantResults[<span class="number">0</span>] == PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">                    <span class="comment">// permission was granted, yay! Do the</span></span><br><span class="line">                    <span class="comment">// contacts-related task you need to do.</span></span><br><span class="line">                    Toast.makeText(<span class="keyword">this</span>,<span class="string">"成功获取权限 ^^!"</span>,Toast.LENGTH_LONG).show();</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// permission denied, boo! Disable the</span></span><br><span class="line">                    <span class="comment">// functionality that depends on this permission.</span></span><br><span class="line">                    Toast.makeText(<span class="keyword">this</span>,<span class="string">"你拒绝了权限 QAQ!"</span>,Toast.LENGTH_LONG).show();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// other 'case' lines to check for other</span></span><br><span class="line">            <span class="comment">// permissions this app might request.</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onWindowFocusChanged</span><span class="params">(<span class="keyword">boolean</span> hasFocus)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onWindowFocusChanged(hasFocus);</span><br><span class="line">        <span class="comment">//初始化控件</span></span><br><span class="line">        iv_show = (ImageView) findViewById(R.id.iv_bg);</span><br><span class="line">        <span class="comment">//创建一个空白的bitmap</span></span><br><span class="line">        <span class="comment">//先获取snow.jpg的原图 作为背景</span></span><br><span class="line">        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg);</span><br><span class="line">        copyBitmap = Bitmap.createBitmap(iv_show.getWidth(),</span><br><span class="line">                iv_show.getHeight(), bitmap.getConfig());</span><br><span class="line">        <span class="comment">//创建画布</span></span><br><span class="line">        <span class="keyword">final</span> Canvas canvas = <span class="keyword">new</span> Canvas(copyBitmap);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//使用画布绘制图片</span></span><br><span class="line">        paint = <span class="keyword">new</span> Paint();</span><br><span class="line">        paint.setStrokeWidth(paintsize);</span><br><span class="line"><span class="comment">//        canvas.drawBitmap(bitmap, new Matrix(), paint);   //这行代码会知道，背景图片偏移</span></span><br><span class="line"></span><br><span class="line">        iv_show.setImageBitmap(copyBitmap);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//为画笔在屏幕上移动设置监听事件</span></span><br><span class="line">        iv_show.setOnTouchListener(<span class="keyword">new</span> View.OnTouchListener() &#123;</span><br><span class="line">            <span class="keyword">float</span> startX = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">float</span> startY = <span class="number">0</span>;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouch</span><span class="params">(View v, MotionEvent event)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">                <span class="comment">//获取当前事件的类型</span></span><br><span class="line">                <span class="keyword">int</span> action = event.getAction();</span><br><span class="line">                <span class="keyword">switch</span> (action) &#123;</span><br><span class="line">                    <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</span><br><span class="line">                        <span class="comment">//如果是手指按下时,记录一下手指的位置</span></span><br><span class="line">                        x = event.getX();</span><br><span class="line">                        y = event.getY();</span><br><span class="line">                        Log.e(TAG, x + <span class="string">"******"</span> + y);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> MotionEvent.ACTION_MOVE:</span><br><span class="line">                        <span class="comment">//如果手指正在移动时,记录移动坐标</span></span><br><span class="line">                        <span class="keyword">float</span> x1 = event.getX();</span><br><span class="line">                        <span class="keyword">float</span> y1 = event.getY();</span><br><span class="line">                        canvas.drawLine(x, y, x1, y1, paint);</span><br><span class="line">                        <span class="comment">//iv_show.setImageBitmap(copyBitmap);</span></span><br><span class="line">                        x = x1;</span><br><span class="line">                        y = y1;</span><br><span class="line">                        Log.e(TAG, x1 + <span class="string">"**********"</span> + y1);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> MotionEvent.ACTION_UP:</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                iv_show.setImageBitmap(copyBitmap);</span><br><span class="line">                <span class="comment">// 如果返回值是true 当前监听器对象会消费掉</span></span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//修改颜色</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">color</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">        paint.setColor(Color.RED);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//修改线条粗细</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">size</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">        paintsize += <span class="number">1</span>;</span><br><span class="line">        paint.setStrokeWidth(paintsize);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//保存图片</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            FileOutputStream fos;</span><br><span class="line">            Log.d(<span class="string">"Path"</span>,Environment.getExternalStorageDirectory().getPath()) ;</span><br><span class="line"><span class="comment">//            file = new File(Environment.getDataDirectory().getPath(), "painting.png");</span></span><br><span class="line">            File folder=<span class="keyword">new</span> File(Environment.getExternalStorageDirectory().getPath()+<span class="string">"/mytestapp"</span>);</span><br><span class="line">            <span class="comment">//先判断目录是否存在,不存在则创建</span></span><br><span class="line">            <span class="keyword">if</span>(!folder.exists())</span><br><span class="line">            &#123;</span><br><span class="line">                Log.d(<span class="string">"File Detect"</span>,<span class="string">"nofile"</span>);</span><br><span class="line">                Log.d(<span class="string">"MakeDirReault"</span>,<span class="string">""</span>+folder.mkdirs());</span><br><span class="line">            &#125;</span><br><span class="line">            File file = <span class="keyword">new</span> File(Environment.getExternalStorageDirectory().getPath()+<span class="string">"/mytestapp"</span>,<span class="string">"painting.png"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//创建保存文件流</span></span><br><span class="line">            Log.d(<span class="string">"FilePath"</span>,file.getPath()+<span class="string">" "</span>+file.getAbsolutePath());</span><br><span class="line">            fos = <span class="keyword">new</span> FileOutputStream(file.getPath());</span><br><span class="line"></span><br><span class="line">            <span class="comment">//参1:保存图片的格式   参数2:quality 质量</span></span><br><span class="line"></span><br><span class="line">            copyBitmap.compress(Bitmap.CompressFormat.PNG, <span class="number">100</span>, fos);</span><br><span class="line">            fos.flush();</span><br><span class="line">            fos.close();</span><br><span class="line"></span><br><span class="line">            Toast.makeText(getApplicationContext(), <span class="string">"保存成功,存储位置:"</span>+Environment.getExternalStorageDirectory().getPath()+<span class="string">"/mytestapp/painting.png"</span>, Toast.LENGTH_LONG).show();</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//清除</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clean</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/24/HexoNew/" rel="prev" title="重归Hexo!">
+      <i class="fa fa-chevron-left"></i> 重归Hexo!
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/31/Android4/" rel="next" title="Android-SharedPreferences">
+      Android-SharedPreferences <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Android3-Bitmap"><span class="nav-number">1.</span> <span class="nav-text">Android3-Bitmap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#结果预览"><span class="nav-number">1.1.</span> <span class="nav-text">结果预览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可绘制对象概览"><span class="nav-number">1.2.</span> <span class="nav-text">可绘制对象概览</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过drawable-绘制"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">通过drawable  绘制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过XML-创建"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">通过XML 创建</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#形状可绘制对象"><span class="nav-number">1.2.1.</span> <span class="nav-text">形状可绘制对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NinePatch-可绘制对象"><span class="nav-number">1.2.2.</span> <span class="nav-text">NinePatch 可绘制对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义可绘制对象"><span class="nav-number">1.2.3.</span> <span class="nav-text">自定义可绘制对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-Bitmap详解"><span class="nav-number">1.3.</span> <span class="nav-text">Android Bitmap详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、基本信息"><span class="nav-number">1.3.1.</span> <span class="nav-text">一、基本信息</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-Config："><span class="nav-number">1.3.1.0.1.</span> <span class="nav-text">1. Config：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-CompressFormat："><span class="nav-number">1.3.1.0.2.</span> <span class="nav-text">2. CompressFormat：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、加载"><span class="nav-number">1.3.2.</span> <span class="nav-text">二、加载</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#BitmapFactory"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">BitmapFactory</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-从文件中读取"><span class="nav-number">1.3.2.1.1.</span> <span class="nav-text">1.从文件中读取</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-从资源中读取"><span class="nav-number">1.3.2.1.2.</span> <span class="nav-text">2. 从资源中读取</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-从字节序列里读取"><span class="nav-number">1.3.2.1.3.</span> <span class="nav-text">3. 从字节序列里读取</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#巨图加载：BitmapRegionDecoder，可以按照区域进行加载"><span class="nav-number">1.3.2.1.4.</span> <span class="nav-text">巨图加载：BitmapRegionDecoder，可以按照区域进行加载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#高效加载：核心其实也很简单，主要是采样压缩、缓存策略、异步加载等"><span class="nav-number">1.3.2.1.5.</span> <span class="nav-text">高效加载：核心其实也很简单，主要是采样压缩、缓存策略、异步加载等</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-采样压缩-（-gt-【自】高斯模糊）"><span class="nav-number">1.3.2.1.6.</span> <span class="nav-text">1. 采样压缩 （-&gt; 【自】高斯模糊）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#缓存策略"><span class="nav-number">1.3.2.1.7.</span> <span class="nav-text">缓存策略</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#异步加载"><span class="nav-number">1.3.2.1.8.</span> <span class="nav-text">异步加载</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、存储"><span class="nav-number">1.3.3.</span> <span class="nav-text">三、存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、转换"><span class="nav-number">1.3.4.</span> <span class="nav-text">四、转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、内存优化"><span class="nav-number">1.3.5.</span> <span class="nav-text">五、内存优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、开源框架"><span class="nav-number">1.3.6.</span> <span class="nav-text">六、开源框架</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Canvas"><span class="nav-number">1.4.</span> <span class="nav-text">Canvas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Nested-classes-嵌套类"><span class="nav-number">1.4.1.</span> <span class="nav-text">Nested classes 嵌套类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Constants常数"><span class="nav-number">1.4.2.</span> <span class="nav-text">Constants常数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Public-constructors-构造体"><span class="nav-number">1.4.3.</span> <span class="nav-text">Public constructors 构造体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Public-methods-公共方法"><span class="nav-number">1.4.4.</span> <span class="nav-text">Public methods  公共方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题以及解决"><span class="nav-number">1.5.</span> <span class="nav-text">问题以及解决</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期"><span class="nav-number">1.5.1.</span> <span class="nav-text">生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#保存和恢复界面瞬态"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">保存和恢复界面瞬态</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用-onSaveInstanceState-保存简单轻量的界面状态"><span class="nav-number">1.5.1.1.1.</span> <span class="nav-text">使用 onSaveInstanceState() 保存简单轻量的界面状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用保存的实例状态恢复-Activity-界面状态"><span class="nav-number">1.5.1.1.2.</span> <span class="nav-text">使用保存的实例状态恢复 Activity 界面状态</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#onWindowFocusChanged触发简介"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">onWindowFocusChanged触发简介</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件存储"><span class="nav-number">1.5.2.</span> <span class="nav-text">文件存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求应用权限"><span class="nav-number">1.5.3.</span> <span class="nav-text">请求应用权限</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#向清单添加权限"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">向清单添加权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查权限"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">检查权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求权限"><span class="nav-number">1.5.3.3.</span> <span class="nav-text">请求权限</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解释为什么应用需要权限"><span class="nav-number">1.5.3.3.1.</span> <span class="nav-text">解释为什么应用需要权限</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在必要时请求成为默认处理程序"><span class="nav-number">1.5.3.3.2.</span> <span class="nav-text">在必要时请求成为默认处理程序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#请求您需要的权限"><span class="nav-number">1.5.3.3.3.</span> <span class="nav-text">请求您需要的权限</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#处理权限请求响应"><span class="nav-number">1.5.3.3.4.</span> <span class="nav-text">处理权限请求响应</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#其他资源"><span class="nav-number">1.5.3.3.5.</span> <span class="nav-text">其他资源</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#额外"><span class="nav-number">1.5.4.</span> <span class="nav-text">额外</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置文件"><span class="nav-number">1.5.4.1.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按钮事件"><span class="nav-number">1.5.4.2.</span> <span class="nav-text">按钮事件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心代码"><span class="nav-number">1.6.</span> <span class="nav-text">核心代码</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Crowds"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Crowds</p>
+  <div class="site-description" itemprop="description">Thinking is a good servant,<br/>but a bad master</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/crowds21" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;crowds21" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Crowds</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+  <script>
+  function leancloudSelector(url) {
+    url = encodeURI(url);
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = decodeURI(visitors.getAttribute('id'));
+      var title = visitors.dataset.flagTitle;
+
+      //2020-3-26
+      // Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+      Counter('get', `/classes/Counter?where=${encodeURIComponent(JSON.stringify({ url }))}&limit=1`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+              leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title, url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.error('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return decodeURI(element.getAttribute('id'));
+      });
+
+      //2020-3-26
+      // Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+      Counter('get', `?where=${encodeURIComponent(JSON.stringify({ url: { '$in': entries } }))}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=Ow53V4vYCyxtcWnamhyfq4Ap-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : 'Ow53V4vYCyxtcWnamhyfq4Ap-gzGzoHsz',
+            'X-LC-Key'    : '3gHd2WiLdR4UuRzpMGNSXQgf',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

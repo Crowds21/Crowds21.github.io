@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"crowds21.top","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Android-SharedPreferencesAndroid作业4   Drawable中自定义的系统学习  结果展示">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android-SharedPreferences">
+<meta property="og:url" content="crowds21.top/2020/03/31/Android4/index.html">
+<meta property="og:site_name" content="Crowds21">
+<meta property="og:description" content="Android-SharedPreferencesAndroid作业4   Drawable中自定义的系统学习  结果展示">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="crowds21.top/2020/03/31/Android4/image-20200331192727665.png">
+<meta property="article:published_time" content="2020-03-31T11:35:00.000Z">
+<meta property="article:modified_time" content="2020-03-31T11:58:22.722Z">
+<meta property="article:author" content="Crowds">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="crowds21.top/2020/03/31/Android4/image-20200331192727665.png">
+
+<link rel="canonical" href="crowds21.top/2020/03/31/Android4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>Android-SharedPreferences | Crowds21</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a7c71f33be5113656f9ec7859c6a3724";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Crowds21</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>Schedule</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="crowds21.top/2020/03/31/Android4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="Crowds">
+      <meta itemprop="description" content="Thinking is a good servant,<br/>but a bad master">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Crowds21">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android-SharedPreferences
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-03-31 19:35:00 / Modified: 19:58:22" itemprop="dateCreated datePublished" datetime="2020-03-31T19:35:00+08:00">2020-03-31</time>
+            </span>
+
+          
+            <span id="/2020/03/31/Android4/" class="post-meta-item leancloud_visitors" data-flag-title="Android-SharedPreferences" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Android-SharedPreferences"><a href="#Android-SharedPreferences" class="headerlink" title="Android-SharedPreferences"></a>Android-SharedPreferences</h1><p>Android作业4</p>
+<ul>
+<li><input disabled="" type="checkbox"> Drawable中自定义的系统学习</li>
+</ul>
+<h3 id="结果展示"><a href="#结果展示" class="headerlink" title="结果展示"></a>结果展示</h3><img src="image-20200331192727665.png" alt="image-20200331192727665" style="zoom: 25%;" />
+
+<a id="more"></a>
+
+<p><strong>因为手机Root失败的没有办法查看data目录下文件SharedPreferences文件</strong></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>通过SharedPreferences保存键对值。</p>
+<h4 id="储存"><a href="#储存" class="headerlink" title="储存"></a>储存</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SharedPreferences.Editor editor =getSharedPreferences(<span class="string">"ex4-login"</span>,MODE_PRIVATE).edit();		</span><br><span class="line"><span class="comment">//参数为文件名和读取模式</span></span><br><span class="line">editor.putString(<span class="string">"account"</span>,account);</span><br><span class="line"><span class="comment">//存储的键对值</span></span><br><span class="line">editor.putString(<span class="string">"password"</span>,password);</span><br><span class="line">editor.putBoolean(<span class="string">"isMemoryPwd"</span>,isMemoryPwd);</span><br><span class="line">editor.putBoolean(<span class="string">"isAutoLogin"</span>,isAutoLogin);</span><br><span class="line">editor.apply();</span><br></pre></td></tr></table></figure>
+
+<h4 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SharedPreferences pref = getSharedPreferences(<span class="string">"ex4-login"</span>,MODE_PRIVATE);</span><br><span class="line"><span class="comment">//参数为文件名和读取模式</span></span><br><span class="line">account = pref.getString(<span class="string">"account"</span>,<span class="string">""</span>);	</span><br><span class="line"><span class="comment">//读取的键值和默认数值</span></span><br><span class="line">password = pref.getString(<span class="string">"password"</span>,<span class="string">""</span>);</span><br><span class="line">isMemoryPwd = pref.getBoolean(<span class="string">"isMemoryPwd"</span>,<span class="keyword">false</span>);</span><br><span class="line">isAutoLogin = pref.getBoolean(<span class="string">"isAutoLogin"</span>,<span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="CheckBox触发"><a href="#CheckBox触发" class="headerlink" title="CheckBox触发"></a>CheckBox触发</h4><p>通过xml中 android:onclick 绑定函数来设置checkbox是否被选中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">memoryPassword</span><span class="params">(View view)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (checkMemory.isChecked())&#123;</span><br><span class="line">		isMemoryPwd = <span class="keyword">true</span> ;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        isMemoryPwd = <span class="keyword">false</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">autoLogin</span><span class="params">(View view)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (checkAutoLogin.isChecked())&#123;</span><br><span class="line">		isAutoLogin = <span class="keyword">true</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		isAutoLogin = <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="问题以及解决"><a href="#问题以及解决" class="headerlink" title="问题以及解决"></a>问题以及解决</h3><h4 id="圆形Button"><a href="#圆形Button" class="headerlink" title="圆形Button"></a>圆形Button</h4><p>style 文件中写入</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"CircleButton"</span>&gt;</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:colorControlHighlight"</span>&gt;</span>#FAFAFA<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:radius"</span>&gt;</span>25dp<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Drawable的使用"><a href="#Drawable的使用" class="headerlink" title="Drawable的使用"></a>Drawable的使用</h4><p>自定义样式,如<code>selector</code>按钮选择器，或者<code>shape</code>设置控件形状，了解比较零碎有待完整的学习。</p>
+<h4 id="布局嵌套"><a href="#布局嵌套" class="headerlink" title="布局嵌套"></a>布局嵌套</h4><p>约束布局，无法通过嵌套达到图例中的效果</p>
+<p>最终只能将约束布局作为最外层布局，需要自定义样式的控件，用<code>&lt;LinearLayout&gt;</code>嵌套，并设置</p>
+<p><code>android:background=&quot;@drawable/text_edit_shape&quot;</code>样式</p>
+<h4 id="xml中绑定onclick"><a href="#xml中绑定onclick" class="headerlink" title="xml中绑定onclick"></a>xml中绑定onclick</h4><p><code>CheckBox</code>中设置<code>android:onClick=&quot;autoLogin&quot;</code>，会在 产生单击事件时，自动触发<code>autoLogin()函数</code></p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.exercise4;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.SharedPreferences;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.widget.CheckBox;</span><br><span class="line"><span class="keyword">import</span> android.widget.EditText;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    EditText editAccount;</span><br><span class="line">    EditText editPassword;</span><br><span class="line">    CheckBox checkMemory;</span><br><span class="line">    CheckBox checkAutoLogin;</span><br><span class="line">    Boolean isMemoryPwd = <span class="keyword">false</span>;</span><br><span class="line">    Boolean isAutoLogin = <span class="keyword">false</span>;</span><br><span class="line">    String account = <span class="string">""</span>;</span><br><span class="line">    String password = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        editAccount = (EditText)findViewById(R.id.edit_account);</span><br><span class="line">        editPassword=(EditText)findViewById(R.id.edit_password);</span><br><span class="line">        checkMemory =(CheckBox) findViewById(R.id.checkbox_memory);</span><br><span class="line">        checkAutoLogin = (CheckBox)findViewById(R.id.checkbox_auto_login);</span><br><span class="line"></span><br><span class="line">        SharedPreferences pref = getSharedPreferences(<span class="string">"ex4-login"</span>,MODE_PRIVATE);</span><br><span class="line">        account = pref.getString(<span class="string">"account"</span>,<span class="string">""</span>);</span><br><span class="line">        password = pref.getString(<span class="string">"password"</span>,<span class="string">""</span>);</span><br><span class="line">        isMemoryPwd = pref.getBoolean(<span class="string">"isMemoryPwd"</span>,<span class="keyword">false</span>);</span><br><span class="line">        isAutoLogin = pref.getBoolean(<span class="string">"isAutoLogin"</span>,<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">        checkMemory.setChecked(isMemoryPwd);</span><br><span class="line">        checkAutoLogin.setChecked(isAutoLogin);</span><br><span class="line">        editAccount.setText(account);</span><br><span class="line">        editPassword.setText(password);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (isAutoLogin)&#123;</span><br><span class="line">            <span class="keyword">if</span> (account.equals(<span class="string">"123"</span>)  &amp;&amp; password.equals(<span class="string">"123"</span>) )&#123;</span><br><span class="line">                Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"登陆成功"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"登陆失败"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">memoryPassword</span><span class="params">(View view)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (checkMemory.isChecked())&#123;</span><br><span class="line">            isMemoryPwd = <span class="keyword">true</span> ;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            isMemoryPwd = <span class="keyword">false</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">autoLogin</span><span class="params">(View view)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (checkAutoLogin.isChecked())&#123;</span><br><span class="line">            isAutoLogin = <span class="keyword">true</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            isAutoLogin = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">btnLogin</span><span class="params">(View view)</span></span>&#123;</span><br><span class="line">        password = editPassword.getText().toString().trim();</span><br><span class="line">        account = editAccount.getText().toString().trim();</span><br><span class="line">        SharedPreferences.Editor editor =</span><br><span class="line">                getSharedPreferences(<span class="string">"ex4-login"</span>,MODE_PRIVATE).edit();</span><br><span class="line">        <span class="comment">//记住密码</span></span><br><span class="line">        <span class="keyword">if</span> (isMemoryPwd)&#123;</span><br><span class="line">            editor.putString(<span class="string">"account"</span>,account);</span><br><span class="line">            editor.putString(<span class="string">"password"</span>,password);</span><br><span class="line">            editor.putBoolean(<span class="string">"isMemoryPwd"</span>,isMemoryPwd);</span><br><span class="line">            editor.putBoolean(<span class="string">"isAutoLogin"</span>,isAutoLogin);</span><br><span class="line">            editor.apply();</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            editor.putString(<span class="string">"account"</span>,account);</span><br><span class="line">            editor.putString(<span class="string">"password"</span>,<span class="string">""</span>);</span><br><span class="line">            editor.putBoolean(<span class="string">"isMemoryPwd"</span>,isMemoryPwd);</span><br><span class="line">            editor.putBoolean(<span class="string">"isAutoLogin"</span>,isAutoLogin);</span><br><span class="line">            editor.apply();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (account.equals(<span class="string">"123"</span>)  &amp;&amp; password.equals(<span class="string">"123"</span>) )&#123;</span><br><span class="line">            Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"登陆成功"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"登陆失败"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">androidx.constraintlayout.widget.ConstraintLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--账号密码--&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/linear_account"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_margin</span>=<span class="string">"20dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:background</span>=<span class="string">"@drawable/text_edit_shape"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintLeft_toLeftOf</span>=<span class="string">"parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintTop_toTopOf</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/text_account"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"账号 | "</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textColor</span>=<span class="string">"@color/colorWhite"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textSize</span>=<span class="string">"40px"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/edit_account"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"200dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginRight</span>=<span class="string">"50dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:background</span>=<span class="string">"@null"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:hint</span>=<span class="string">"请输入账号"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textSize</span>=<span class="string">"40px"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:singleLine</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textColorHint</span>=<span class="string">"@color/colorWhite"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textColor</span>=<span class="string">"@color/colorWhite"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/linear_password"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_margin</span>=<span class="string">"20dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:background</span>=<span class="string">"@drawable/text_edit_shape"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintLeft_toLeftOf</span>=<span class="string">"parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintTop_toBottomOf</span>=<span class="string">"@+id/linear_account"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/text_password"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"密码 | "</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textColor</span>=<span class="string">"@color/colorWhite"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textSize</span>=<span class="string">"40px"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintLeft_toLeftOf</span>=<span class="string">"parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:layout_constraintTop_toBottomOf</span>=<span class="string">"@+id/text_account"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/edit_password"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"200dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginRight</span>=<span class="string">"50dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:background</span>=<span class="string">"@null"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:hint</span>=<span class="string">"请输入密码"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textSize</span>=<span class="string">"40px"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:inputType</span>=<span class="string">"textPassword"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:singleLine</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textColorHint</span>=<span class="string">"@color/colorWhite"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textColor</span>=<span class="string">"@color/colorWhite"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">CheckBox</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/checkbox_memory"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_margin</span>=<span class="string">"20dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"记住密码"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:onClick</span>=<span class="string">"memoryPassword"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintLeft_toLeftOf</span>=<span class="string">"parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintTop_toBottomOf</span>=<span class="string">"@+id/linear_password"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">CheckBox</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/checkbox_auto_login"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_margin</span>=<span class="string">"20dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"自动登录"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:onClick</span>=<span class="string">"autoLogin"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintLeft_toLeftOf</span>=<span class="string">"parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintTop_toBottomOf</span>=<span class="string">"@+id/checkbox_memory"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">ImageButton</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/btn_login"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:theme</span>=<span class="string">"@style/CircleButton"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:background</span>=<span class="string">"@drawable/button_selector"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:onClick</span>=<span class="string">"btnLogin"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintLeft_toRightOf</span>=<span class="string">"@+id/checkbox_auto_login"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintRight_toRightOf</span>=<span class="string">"parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintTop_toBottomOf</span>=<span class="string">"@id/checkbox_memory"</span></span></span><br><span class="line"><span class="tag">        /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">androidx.constraintlayout.widget.ConstraintLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Style"><a href="#Style" class="headerlink" title="Style"></a>Style</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Base application theme. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"AppTheme"</span> <span class="attr">parent</span>=<span class="string">"Theme.AppCompat.Light.DarkActionBar"</span>&gt;</span></span><br><span class="line"><span class="xml">        <span class="comment">&lt;!-- Customize your theme here. --&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorPrimary"</span>&gt;</span>@color/colorPrimary<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorPrimaryDark"</span>&gt;</span>@color/colorPrimaryDark<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorAccent"</span>&gt;</span>@color/colorAccent<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"CircleButton"</span>&gt;</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:colorControlHighlight"</span>&gt;</span>#FAFAFA<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:radius"</span>&gt;</span>25dp<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="colors-xml"><a href="#colors-xml" class="headerlink" title="colors.xml"></a>colors.xml</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"colorPrimary"</span>&gt;</span>#6200EE<span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"colorPrimaryDark"</span>&gt;</span>#3700B3<span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"colorAccent"</span>&gt;</span>#03DAC5<span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"colorBlack"</span>&gt;</span>#000000<span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"colorGrey"</span>&gt;</span>#292727<span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"colorWhite"</span>&gt;</span>#FFFFFF<span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"colorOrange"</span>&gt;</span>#FF5722<span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"colorBlue"</span>&gt;</span>#8029A0D6<span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Drawable-button-selector-xml"><a href="#Drawable-button-selector-xml" class="headerlink" title="Drawable-button_selector.xml"></a>Drawable-button_selector.xml</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">selector</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/selection_2"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:state_pressed</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/check_surface_3"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:state_pressed</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">selector</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Drawable-text-edit-shape-xml"><a href="#Drawable-text-edit-shape-xml" class="headerlink" title="Drawable-text_edit_shape.xml"></a>Drawable-text_edit_shape.xml</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">shape</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:shape</span>=<span class="string">"rectangle"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 形状 --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 内填充颜色 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">solid</span> <span class="attr">android:color</span>=<span class="string">"#2196F3"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 边框 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">stroke</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:width</span>=<span class="string">"1dip"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:color</span>=<span class="string">"@color/colorBlue"</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--边距 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">padding</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:bottom</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:left</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:right</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:top</span>=<span class="string">"10dp"</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 圆角 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">corners</span> <span class="attr">android:radius</span>=<span class="string">"6dp"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/30/Android3/" rel="prev" title="Android-Bitmap">
+      <i class="fa fa-chevron-left"></i> Android-Bitmap
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-SharedPreferences"><span class="nav-number">1.</span> <span class="nav-text">Android-SharedPreferences</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#结果展示"><span class="nav-number">1.0.1.</span> <span class="nav-text">结果展示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">1.0.2.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#储存"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">储存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#读取"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">读取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CheckBox触发"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">CheckBox触发</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题以及解决"><span class="nav-number">1.0.3.</span> <span class="nav-text">问题以及解决</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#圆形Button"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">圆形Button</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Drawable的使用"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">Drawable的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#布局嵌套"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">布局嵌套</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#xml中绑定onclick"><span class="nav-number">1.0.3.4.</span> <span class="nav-text">xml中绑定onclick</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码"><span class="nav-number">1.1.</span> <span class="nav-text">源码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Layout"><span class="nav-number">1.1.1.</span> <span class="nav-text">Layout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Style"><span class="nav-number">1.1.2.</span> <span class="nav-text">Style</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#colors-xml"><span class="nav-number">1.1.3.</span> <span class="nav-text">colors.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Drawable-button-selector-xml"><span class="nav-number">1.1.4.</span> <span class="nav-text">Drawable-button_selector.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Drawable-text-edit-shape-xml"><span class="nav-number">1.1.5.</span> <span class="nav-text">Drawable-text_edit_shape.xml</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Crowds"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Crowds</p>
+  <div class="site-description" itemprop="description">Thinking is a good servant,<br/>but a bad master</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/crowds21" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;crowds21" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Crowds</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+  <script>
+  function leancloudSelector(url) {
+    url = encodeURI(url);
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = decodeURI(visitors.getAttribute('id'));
+      var title = visitors.dataset.flagTitle;
+
+      //2020-3-26
+      // Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+      Counter('get', `/classes/Counter?where=${encodeURIComponent(JSON.stringify({ url }))}&limit=1`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+              leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title, url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.error('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return decodeURI(element.getAttribute('id'));
+      });
+
+      //2020-3-26
+      // Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+      Counter('get', `?where=${encodeURIComponent(JSON.stringify({ url: { '$in': entries } }))}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=Ow53V4vYCyxtcWnamhyfq4Ap-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : 'Ow53V4vYCyxtcWnamhyfq4Ap-gzGzoHsz',
+            'X-LC-Key'    : '3gHd2WiLdR4UuRzpMGNSXQgf',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
